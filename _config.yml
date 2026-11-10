@@ -1,0 +1,41 @@
+title: "C ve Sistem Programcıları Derneği"
+description: "1993’ten beri C, C++ ve sistem programlama alanında bilgi ve deneyimi paylaşıyoruz."
+url: "https://dengere.github.io"
+baseurl: ""
+lang: tr
+timezone: Europe/Istanbul
+markdown: kramdown
+collections:
+  courses:
+    output: true
+    permalink: /kurslar/:name/
+  announcements:
+    output: true
+    permalink: /duyurular/:name/
+  resources:
+    output: true
+    permalink: /kaynaklar/:name/
+defaults:
+  - scope:
+      path: ""
+      type: courses
+    values:
+      layout: detail
+  - scope:
+      path: ""
+      type: announcements
+    values:
+      layout: detail
+  - scope:
+      path: ""
+      type: resources
+    values:
+      layout: detail
+plugins:
+  - jekyll-seo-tag
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - scripts

@@ -1,0 +1,36 @@
+<footer>
+  <section>
+    <h2>C ve Sistem Programcıları Derneği</h2>
+    <p>Bilgi, deneyim ve paylaşım.</p>
+  </section>
+
+  <nav aria-label="Dernek bağlantıları">
+    <h2>Dernek</h2>
+    <ul>
+      <li><a href="{{ '/hakkimizda/' | relative_url }}">Hakkımızda</a></li>
+      <li><a href="{{ '/yonetim/' | relative_url }}">Yönetim</a></li>
+      <li><a href="{{ '/uyelik/' | relative_url }}">Üyelik</a></li>
+      <li><a href="{{ '/tuzuk/' | relative_url }}">Tüzük</a></li>
+    </ul>
+  </nav>
+
+  <nav aria-label="Bölümler">
+    <h2>Keşfedin</h2>
+    <ul>
+      <li><a href="{{ '/kurslar/' | relative_url }}">Kurslar</a></li>
+      <li><a href="{{ '/duyurular/' | relative_url }}">Duyurular</a></li>
+      <li><a href="{{ '/kaynaklar/' | relative_url }}">Kaynaklar</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h2>İletişim</h2>
+    <ul>
+      <li><a href="mailto:csystem@csystem.org">csystem@csystem.org</a></li>
+      <li><a href="{{ '/iletisim/' | relative_url }}">İletişim bilgileri</a></li>
+      <li><a href="https://csystem.org/">Mevcut CSD sitesi</a></li>
+    </ul>
+  </section>
+
+  <p>&copy; {{ site.time | date: '%Y' }} C ve Sistem Programcıları Derneği — Deneme sitesi &middot; İçerikler doğrulama aşamasındadır.</p>
+</footer>

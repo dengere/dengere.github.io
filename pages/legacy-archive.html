@@ -1,0 +1,17 @@
+---
+layout: page
+title: Arşiv
+permalink: /arsiv/
+---
+
+<p>Tüm yayınlar, yeniden eskiye.</p>
+
+<ul>
+{% for post in site.posts %}
+  <li>
+    <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{% include date.html date=post.date %}</time>
+    ({{ post.kind | default: "not" }}):
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  </li>
+{% endfor %}
+</ul>

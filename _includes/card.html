@@ -1,0 +1,25 @@
+{% assign item = include.item %}
+<article>
+  <h3><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h3>
+  <p>{{ site.data.labels[item.type] | default: item.type | escape }}{% if item.sample %} — Örnek içerik{% endif %}</p>
+  <p>{{ item.summary | escape }}</p>
+  {% if item.collection == 'courses' %}
+    <ul>
+      <li>Eğitmen: {{ item.instructor | default: 'Duyurulacak' | escape }}</li>
+      <li>Başlangıç: {% if item.start_date %}<time datetime="{{ item.start_date | date: '%Y-%m-%d' }}">{% include date.html date=item.start_date %}</time>{% else %}Tarih duyurulacak{% endif %}</li>
+      <li>Eğitim biçimi: {{ site.data.labels[item.format] | default: 'Duyurulacak' | escape }}</li>
+    </ul>
+  {% elsif item.collection == 'announcements' %}
+    <ul>
+      {% if item.date %}<li>Yayın tarihi: <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{% include date.html date=item.date %}</time></li>{% endif %}
+      {% if item.event_date %}<li>Etkinlik tarihi: <time datetime="{{ item.event_date | date: '%Y-%m-%d' }}">{% include date.html date=item.event_date %}</time></li>{% endif %}
+      {% if item.format %}<li>Katılım biçimi: {{ site.data.labels[item.format] | escape }}</li>{% endif %}
+    </ul>
+  {% else %}
+    <ul>
+      <li>Yazar / hazırlayan: {{ item.author | default: 'Yazar bilgisi doğrulanacak' | escape }}</li>
+      {% if item.access %}<li>Erişim: {{ site.data.labels[item.access] | escape }}</li>{% endif %}
+    </ul>
+  {% endif %}
+  <p><a href="{{ item.url | relative_url }}">{% if item.collection == 'courses' %}Eğitimi incele{% elsif item.collection == 'resources' %}Kaynağı incele{% else %}Duyuruyu incele{% endif %}</a></p>
+</article>

@@ -1,0 +1,53 @@
+---
+layout: default
+title: Ana Sayfa
+---
+
+<section>
+  <h1>C ve Sistem Programcıları Derneği</h1>
+  <p>1993’ten beri C, C++ ve sistem programlama alanında <em>bilgi ve deneyimi paylaşıyoruz.</em></p>
+  <p>
+    C ve Sistem Programcıları Derneği, uzmanları ve öğrenmek isteyenleri bir araya getiren bir meslek ve bilgi paylaşımı ortamıdır.
+    Eğitimlerimiz ve yayınlarımızla programcıların gelişimini destekliyor, nitelikli yazılım üretimine katkıda bulunuyoruz.
+  </p>
+  <p>
+    <a href="{{ '/kurslar/' | relative_url }}">Kursları inceleyin</a>
+    <a href="{{ '/hakkimizda/' | relative_url }}">Derneği tanıyın</a>
+  </p>
+</section>
+
+<section>
+  <h2>Yaklaşan Eğitimler</h2>
+  <p>Temellerden uzmanlığa,<br>bilgiyi deneyimle buluşturun.</p>
+  {% assign selected_courses = site.courses | where: 'featured', true | where: 'status', 'upcoming' | sort: 'order' %}
+  {% for item in selected_courses limit:4 %}
+    {% include card.html item=item %}
+  {% else %}
+    <p>Yeni eğitim programı duyurulduğunda burada yer alacak.</p>
+  {% endfor %}
+  <p><a href="{{ '/kurslar/' | relative_url }}">Tüm eğitimleri incele</a></p>
+</section>
+
+<section>
+  <h2>Duyurular</h2>
+  <p>Buluşmalar, haberler ve<br>topluluğumuzdan gelişmeler.</p>
+  {% assign selected_announcements = site.announcements | where_exp: 'item', 'item.date <= site.time' | where: 'featured', true | sort: 'date' | reverse %}
+  {% for item in selected_announcements limit:4 %}
+    {% include card.html item=item %}
+  {% else %}
+    <p>Henüz duyuru bulunmuyor.</p>
+  {% endfor %}
+  <p><a href="{{ '/duyurular/' | relative_url }}">Tüm duyurular</a></p>
+</section>
+
+<section>
+  <h2>Kaynaklar</h2>
+  <p>Kitaplar, makaleler ve notlarla<br>birlikte büyüyen bir birikim.</p>
+  {% assign selected_resources = site.resources | where: 'featured', true | sort: 'order' %}
+  {% for item in selected_resources limit:4 %}
+    {% include card.html item=item %}
+  {% else %}
+    <p>Henüz kaynak bulunmuyor.</p>
+  {% endfor %}
+  <p><a href="{{ '/kaynaklar/' | relative_url }}">Tüm kaynakları incele</a></p>
+</section>

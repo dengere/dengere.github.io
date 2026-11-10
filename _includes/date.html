@@ -1,0 +1,1 @@
+{% assign month_index = include.date | date: '%m' | minus: 1 %}{% assign months = 'Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık' | split: ',' %}{{ include.date | date: '%-d' }} {{ months[month_index] }} {{ include.date | date: '%Y' }}

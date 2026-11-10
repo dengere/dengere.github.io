@@ -1,0 +1,72 @@
+---
+layout: default
+---
+{% if page.collection == 'courses' %}
+  {% assign list_url = '/kurslar/' %}
+  {% assign list_title = 'Kurslar listesine dön' %}
+{% elsif page.collection == 'announcements' %}
+  {% assign list_url = '/duyurular/' %}
+  {% assign list_title = 'Duyurular listesine dön' %}
+{% else %}
+  {% assign list_url = '/kaynaklar/' %}
+  {% assign list_title = 'Kaynaklar listesine dön' %}
+{% endif %}
+
+<article>
+  <p><a href="{{ list_url | relative_url }}">{{ list_title }}</a></p>
+  <p>{{ site.data.labels[page.type] | escape }}</p>
+  <h1>{{ page.title | escape }}</h1>
+
+  {% if page.sample %}
+    <aside>
+      <p><strong>Örnek içerik</strong> — Bu kayıt deneme reposundan taşınmıştır. Tarihler, isimler ve program bilgileri henüz doğrulanmamıştır; kayıt veya katılım duyurusu değildir.</p>
+    </aside>
+  {% endif %}
+
+  <p>{{ page.summary | escape }}</p>
+
+  <dl>
+    {% if page.instructor %}
+      <dt>Eğitmen</dt>
+      <dd>{{ page.instructor | escape }}</dd>
+    {% endif %}
+    {% if page.start_date %}
+      <dt>Başlangıç tarihi</dt>
+      <dd><time datetime="{{ page.start_date | date: '%Y-%m-%d' }}">{% include date.html date=page.start_date %}</time></dd>
+    {% endif %}
+    {% if page.schedule %}
+      <dt>Program</dt>
+      <dd>{{ page.schedule | escape }}</dd>
+    {% endif %}
+    {% if page.collection == 'announcements' %}
+      <dt>Yayın tarihi</dt>
+      <dd><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{% include date.html date=page.date %}</time></dd>
+    {% endif %}
+    {% if page.event_date %}
+      <dt>Etkinlik tarihi</dt>
+      <dd><time datetime="{{ page.event_date | date: '%Y-%m-%d' }}">{% include date.html date=page.event_date %}</time></dd>
+    {% endif %}
+    {% if page.format %}
+      <dt>Katılım biçimi</dt>
+      <dd>{{ site.data.labels[page.format] | escape }}</dd>
+    {% endif %}
+    {% if page.author %}
+      <dt>Yazar / hazırlayan</dt>
+      <dd>{{ page.author | escape }}</dd>
+    {% endif %}
+    {% if page.access %}
+      <dt>Erişim</dt>
+      <dd>{{ site.data.labels[page.access] | escape }}</dd>
+    {% endif %}
+  </dl>
+
+  {{ content }}
+
+  {% if page.external_url and page.sample != true %}
+    <p><a href="{{ page.external_url | escape }}">Dış kaynağı aç</a></p>
+  {% endif %}
+
+  {% if page.collection == 'courses' %}
+    <p><a href="{{ '/iletisim/' | relative_url }}">Eğitim hakkında bilgi alın</a></p>
+  {% endif %}
+</article>
