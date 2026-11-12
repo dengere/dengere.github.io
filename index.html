@@ -18,7 +18,6 @@ title: Ana Sayfa
 
 <section>
   <h2>Yaklaşan Eğitimler</h2>
-  <p>Temellerden uzmanlığa,<br>bilgiyi deneyimle buluşturun.</p>
   {% assign selected_courses = site.courses | where: 'featured', true | where: 'status', 'upcoming' | sort: 'order' %}
   {% for item in selected_courses limit:4 %}
     {% include card.html item=item %}
@@ -30,7 +29,6 @@ title: Ana Sayfa
 
 <section>
   <h2>Duyurular</h2>
-  <p>Buluşmalar, haberler ve<br>topluluğumuzdan gelişmeler.</p>
   {% assign selected_announcements = site.announcements | where_exp: 'item', 'item.date <= site.time' | where: 'featured', true | sort: 'date' | reverse %}
   {% for item in selected_announcements limit:4 %}
     {% include card.html item=item %}
@@ -42,7 +40,6 @@ title: Ana Sayfa
 
 <section>
   <h2>Kaynaklar</h2>
-  <p>Kitaplar, makaleler ve notlarla<br>birlikte büyüyen bir birikim.</p>
   {% assign selected_resources = site.resources | where: 'featured', true | sort: 'order' %}
   {% for item in selected_resources limit:4 %}
     {% include card.html item=item %}
