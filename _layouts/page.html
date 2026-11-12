@@ -2,8 +2,9 @@
 layout: default
 ---
 
-<article>
-  <p><a href="{{ '/' | relative_url }}">Ana sayfa</a></p>
+<article class="markdown-body">
+  <p class="breadcrumb"><a href="{{ '/' | relative_url }}">&larr; Ana sayfa</a></p>
   <h1>{{ page.title | escape }}</h1>
   {{ content }}
 </article>
+

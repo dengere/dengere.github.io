@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<section>
-  <p><a href="{{ '/' | relative_url }}">Ana sayfa</a></p>
+<section class="markdown-body">
+  <p class="breadcrumb"><a href="{{ '/' | relative_url }}">&larr; Ana sayfa</a></p>
   <h1>{{ page.title | escape }}</h1>
   {{ content }}
 
@@ -14,7 +14,10 @@ layout: default
     {% assign items = items | sort: 'order' %}
   {% endif %}
 
+  <div class="card-grid">
   {% for item in items %}
     {% include card.html item=item %}
   {% endfor %}
+  </div>
 </section>
+
