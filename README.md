@@ -1,6 +1,6 @@
 # CSD — Jekyll website
 
-A pure semantic HTML5 C ve Sistem Programcıları Derneği website for GitHub Pages. Rendered entirely with browser default styles without CSS, JavaScript, external fonts, or UI frameworks. Source names and front matter are English; visitor-facing content is Turkish.
+A lightweight semantic HTML5 website for C ve Sistem Programcıları Derneği on GitHub Pages. It uses a small, responsive, GitHub-inspired stylesheet without JavaScript, external fonts, or UI frameworks. Source names and front matter are English; visitor-facing content is Turkish.
 
 ## Local development
 
@@ -34,7 +34,7 @@ The homepage strictly follows this order:
 4. Resources (up to 4 items and link to full listing)
 5. Contact and necessary footer links (in `footer.html`)
 
-There is no top menu or header navigation area.
+Primary navigation is in the shared site header; additional organization and contact links are in the footer.
 
 ## Add a course
 
@@ -102,31 +102,21 @@ Kaynağın açıklaması.
 
 Types: `book`, `article`, `notes`, `video`. Access: `free` or `paid`; omit when unknown. Items link to local detail pages. A verified `external_url` appears there separately. Never add placeholder external URLs to production records. The homepage shows up to four featured resources ordered by `order`.
 
-## HTML5 Output and Accessibility
+## Styling, HTML5 and Accessibility
 
-The site relies exclusively on standard semantic HTML5 elements rendered with browser defaults:
+The site uses a local stylesheet (`assets/css/style.css`) for a restrained, responsive layout inspired by GitHub's default interface. It follows the system light/dark preference and uses the platform's standard sans-serif fonts without external font requests.
 
 - Headings use `h1`, `h2`, `h3`.
 - Major page segments use `section` and `article`.
 - Text content uses standard `p` paragraphs and `time` for dates.
 - Listings and meta information use semantic `ul`, `ol`, `li`, and `dl`, `dt`, `dd`.
-- Links use plain `a` tags without decorative glyphs or icons.
-- No CSS files, inline styles, or `class` attributes exist in templates or markdown files.
+- Links use plain `a` tags, with visible keyboard focus.
+- Layout classes are used only to style shared page regions and listing cards; templates contain no inline styles.
 - No JavaScript, search/filter bars, or interactive dropdown menus are used.
-- Navigation links are cleanly organized in the footer.
+- Navigation links are organized in the shared header and footer.
 
 ## Content provenance and remaining work
 
 Existing records were migrated from the test repository and explicitly marked `sample: true`. Their dates, instructors and descriptions are unverified, not real registration announcements. Their former sample/unverified external URLs were removed rather than exposed as working resources. Archive source remains in Git history.
 
-The about text and contact details derive from https://csystem.org/hakkimizda/ (reviewed 10 November 2026). Confirm contact details before publication. Board, membership and charter pages explicitly state that approved content is pending. No push or publication is part of this local change.
-
-## Validation of this local revision
-
-- Zero CSS files in the project (`assets/` directory completely removed).
-- Zero JavaScript files in the project.
-- Zero `class` or `style` attributes across all HTML, Markdown, and template files.
-- Zero external font connections or stylesheet links.
-- No top menu or navigation bar.
-- Valid semantic HTML5 hierarchy across layouts (`default.html`, `detail.html`, `listing.html`, `page.html`), includes (`card.html`, `date.html`, `footer.html`), and pages.
-- Internal route mapping and link integrity verified for all 24 site routes.
+The about text and contact details derive from https://csystem.org/hakkimizda/ (reviewed 10 November 2026). Confirm contact details before publication. Board, membership and charter pages explicitly state that approved content is pending.
