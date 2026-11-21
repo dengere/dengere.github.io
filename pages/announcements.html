@@ -1,8 +1,20 @@
 ---
-layout: listing
+layout: default
 title: Duyurular
 permalink: /duyurular/
-collection_name: announcements
-filter_field: type
 ---
-<p>Seminerler, buluşmalar ve dernekten haberler.</p>
+
+<section class="markdown-body">
+  <h1>{{ page.title | escape }}</h1>
+  <p>Seminerler, buluşmalar ve dernekten haberler.</p>
+
+  {% assign announcements = site.announcements | where_exp: 'item', 'item.date <= site.time' | sort: 'date' | reverse %}
+
+  <div class="card-grid">
+  {% for announcement in announcements %}
+    {% include home-card-announce.html item=announcement %}
+  {% else %}
+    <p>Henüz yayınlanmış bir duyuru bulunmuyor.</p>
+  {% endfor %}
+  </div>
+</section>

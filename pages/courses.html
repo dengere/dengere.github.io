@@ -1,8 +1,19 @@
 ---
-layout: listing
+layout: default
 title: Kurslar
 permalink: /kurslar/
-collection_name: courses
-filter_field: status
 ---
-<p>Açılan, yaklaşan ve geçmiş dönem eğitimleri. Deneme içerikleri kartlarda ayrıca belirtilmiştir.</p>
+
+<section class="markdown-body">
+   <h1>{{ page.title | escape }}</h1>
+
+  {% assign courses = site.courses | sort: 'order' %}
+
+  <div class="card-grid">
+  {% for course in courses %}
+    {% include home-card-course.html item=course %}
+  {% else %}
+    <p>Şu an listelenecek eğitim bulunmuyor.</p>
+  {% endfor %}
+  </div>
+</section>
