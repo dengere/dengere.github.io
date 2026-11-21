@@ -4,11 +4,12 @@ summary: "Temel ve orta düzey C dili eğitimi, bellek modeli, işaretçiler (po
 type: "course"
 featured: true
 order: 1
-sample: true
+sample: false
 instructor: "Kaan Aslan"
-start_date: "2026-11-28"
+start_date: 2026-11-28
 schedule: "Hafta Sonu (Cumartesi - Pazar 10:00 - 14:00)"
 status: "upcoming"
+format: "Online"
 ---
 
 <p>Temel ve orta düzey C dili eğitimi, bellek modeli, işaretçiler (pointers) ve standart kütüphane fonksiyonları kapsamlı olarak incelenir.</p>

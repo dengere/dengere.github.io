@@ -327,3 +327,64 @@ dd {
     font-size: inherit;
   }
 }
+
+/* Mobile-first giriş alanı (Kutusuz, sade) */
+.intro {
+  padding-bottom: 24px;
+  /* border-bottom: 1px solid var(--color-border-default); */
+}
+
+/* Slogan (İlk paragraf) */
+.intro p:first-child {
+  margin-top: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-heading);
+}
+
+.intro p:first-child em {
+  font-style: normal;
+  color: var(--color-accent-fg);
+}
+
+/* Açıklama paragrafı */
+.intro p:nth-child(2) {
+  color: var(--color-fg-muted);
+}
+
+/* Butonlar */
+.intro p:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.intro p:last-child a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--color-border-default);
+}
+
+.intro p:last-child a:first-child {
+  background: var(--color-heading);
+  border-color: var(--color-heading);
+  color: var(--color-canvas-default);
+}
+
+/* Masaüstü / Tablet */
+@media (min-width: 481px) {
+  .intro {
+    padding-bottom: 32px;
+  }
+
+  .intro p:first-child {
+    font-size: 1.65rem;
+  }
+}

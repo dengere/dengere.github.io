@@ -1,0 +1,13 @@
+{% assign item = include.item %}
+<article>
+  <h3><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h3>
+  <p>{{ item.summary | escape }}</p>
+  <p>
+    <small>
+      Başlangıç: <strong>{% if item.start_date %}<time datetime="{{ item.start_date | date: '%Y-%m-%d' }}">{% include date.html date=item.start_date %}</time>{% else %}Duyurulacak{% endif %}</strong> · 
+      Eğitmen: <strong>{{ item.instructor | default: 'Duyurulacak' | escape }}</strong>
+      {% if item.format %} · {{ site.data.labels[item.format] | escape }}{% endif %}
+    </small>
+  </p>
+  <p><a href="{{ item.url | relative_url }}">İncele <code>-&gt;</code></a></p>
+</article>
