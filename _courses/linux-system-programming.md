@@ -1,16 +1,33 @@
 ---
 title: "Sistem Programlama (Linux & POSIX)"
-summary: "Süreç yönetimi (process management), sinyaller, IPC (Inter-process communication), threads ve ağ soket programlama konuları derinlemesine işlenir."
+summary: "Linux çekirdek sistem çağrıları, süreç yönetimi, çoklu iş parçacığı (POSIX threads), süreçler arası iletişim (IPC) ve ağ programlama temelleri."
 type: "course"
-featured: true
-order: 4
+categories:
+  - "Sistem Programlama"
+  - "C / C++"
+order: 2
 sample: true
 instructor: "Kaan Aslan"
-start_date: "2026-12-05"
-schedule: "Hafta İçi Akşam (Salı - Perşembe 19:30 - 22:30)"
-status: "upcoming"
+start_date: 2026-12-12
+schedule: "Hafta Sonu (Cumartesi - Pazar 14:30 - 18:30)"
+format: "Online"
+duration: "120 saat"
 ---
 
-<p>Süreç yönetimi (process management), sinyaller, IPC (Inter-process communication), threads ve ağ soket programlama konuları derinlemesine işlenir.</p>
+## Kurs Hakkında
 
-Bu kayıt önceki deneme sitesinden taşınmıştır. Tarih, program ve içerik yayından önce doğrulanmalıdır.
+Bu eğitimde POSIX standartları ve Linux işletim sistemi mimarisi üzerinde doğrudan sistem çağrıları (system calls) kullanılarak düşük seviyeli uygulama geliştirme teknikleri ele alınır.
+
+## Kurs İçeriği
+
+### Dosya Sistemi ve G/Ç İşlemleri
+* Düşük seviyeli dosya tanımlayıcıları (`open`, `read`, `write`, `lseek`)
+* Dosya kilitleme mekanizmaları ve bellek eşlemeli dosyalar (`mmap`)
+
+### Süreç ve İş Parçacığı Yönetimi
+* Süreç oluşturma ve yaşam döngüsü (`fork`, `exec`, `wait`)
+* POSIX Threads (`pthread`) ile eşzamanlılık ve senkronizasyon (`mutex`, `semaphore`, `condition variable`)
+
+### Süreçler Arası İletişim (IPC) ve Ağ Programlama
+* İsimsiz ve isimli borular (`pipe`, `FIFO`), paylaşılan bellek (`shared memory`) ve mesaj kuyrukları
+* Soket programlama temelleri (TCP/UDP istemci-sunucu mimarisi)

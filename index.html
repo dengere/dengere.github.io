@@ -20,14 +20,13 @@ title: Ana Sayfa
     <h2>Yaklaşan Eğitimler</h2>
     <a href="{{ '/kurslar/' | relative_url }}">Tüm eğitimleri incele ›</a>
   </header>
-  {% assign selected_courses = site.courses | where: 'featured', true | where: 'status', 'upcoming' | sort: 'order' %}
+  {% assign selected_courses = site.courses | where_exp: 'c', 'c.start_date != nil' | sort: 'start_date' | reverse %}
   {% for item in selected_courses limit:4 %}
     {% include card.html item=item %}
   {% else %}
     <p>Yeni eğitim programı duyurulduğunda burada yer alacak.</p>
   {% endfor %}
 </section>
-
 <section>
   <header class="section-header">
     <h2>Duyurular</h2>

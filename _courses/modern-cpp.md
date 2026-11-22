@@ -1,16 +1,32 @@
 ---
 title: "Modern C++ Programlama (C++20/C++23)"
-summary: "Modern C++ standartları, Move Semantics, Smart Pointers, Lambdas, Metaprogramming, Concepts ve Ranges kütüphanesi uygulamalı olarak anlatılır."
+summary: "Nesne yönelimli ve genelleyici (generic) programlama paradigmaları, RAII, akıllı işaretçiler, şablon meta-programlama ve modern C++ standartları."
 type: "course"
-featured: true
-order: 2
+categories:
+  - "C / C++"
+order:
 sample: true
-instructor: "Necati Ergin"
-start_date: "2026-12-12"
-schedule: "Hafta Sonu (Cumartesi 15:00 - 19:00)"
-status: "upcoming"
+instructor: "Kaan Aslan"
+start_date:
+schedule: "Hafta İçi Akşam (Salı - Perşembe 19:30 - 22:30)"
+format: "Online"
+duration: "140 saat"
 ---
 
-<p>Modern C++ standartları, Move Semantics, Smart Pointers, Lambdas, Metaprogramming, Concepts ve Ranges kütüphanesi uygulamalı olarak anlatılır.</p>
+## Kurs Hakkında
 
-Bu kayıt önceki deneme sitesinden taşınmıştır. Tarih, program ve içerik yayından önce doğrulanmalıdır.
+Klasik C++ yaklaşımlarının ötesine geçerek C++17, C++20 ve C++23 standartlarıyla dile eklenen modern bellek yönetimi, taşıma semantiği ve derleme zamanı araçları incelenir.
+
+## Kurs İçeriği
+
+### Modern Bellek ve Kaynak Yönetimi
+* Değer kategorileri (`lvalue`, `rvalue`), taşıma semantiği (move semantics) ve mükemmel iletim (perfect forwarding)
+* RAII ilkesi ve akıllı işaretçiler (`unique_ptr`, `shared_ptr`, `weak_ptr`)
+
+### Şablonlar ve Genelleyici Programlama
+* Şablon uzmanlaştırma (template specialization) ve değişken argümanlı şablonlar (variadic templates)
+* Concepts, Ranges kütüphanesi ve derleme zamanı hesaplamaları (`constexpr`, `consteval`)
+
+### Standart Şablon Kütüphanesi (STL) ve Eşzamanlılık
+* Taşıyıcılar (containers), yineleyiciler (iterators) ve algoritmalar
+* `std::thread`, `std::async`, `std::future` ve atomik işlemler

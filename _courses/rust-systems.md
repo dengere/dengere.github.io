@@ -1,16 +1,33 @@
 ---
 title: "Rust ile Sistem Programlama"
-summary: "Ownership, borrowing kuralları, eşzamanlılık (concurrency) güvenliği ve düşük seviyeli sistem araçlarının Rust ile geliştirilmesi."
+summary: "Çöp toplayıcı (garbage collector) olmadan derleme zamanında bellek güvenliği sağlayan Rust dilinin sahiplik modeli, eşzamanlılık ve sistem programlama pratikleri."
 type: "course"
-featured: true
-order: 3
+categories:
+  - "Sistem Programlama"
+  - "Modern Sistem Dilleri"
+order:
 sample: true
-instructor: "Dernek Eğitmen Kadrosu"
-start_date: "2027-01-09"
-schedule: "Hafta Sonu (Pazar 15:00 - 19:00)"
-status: "upcoming"
+instructor: "Kaan Aslan"
+start_date:
+schedule: "Hafta Sonu (Pazar 10:00 - 14:00)"
+format: "Online"
+duration: "96 saat"
 ---
 
-<p>Ownership, borrowing kuralları, eşzamanlılık (concurrency) güvenliği ve düşük seviyeli sistem araçlarının Rust ile geliştirilmesi.</p>
+## Kurs Hakkında
 
-Bu kayıt önceki deneme sitesinden taşınmıştır. Tarih, program ve içerik yayından önce doğrulanmalıdır.
+Sistem seviyesinde yüksek performans ve bellek güvenliğini bir arada sunan Rust dilinin temel yapı taşları, ödünç alma denetleyicisi (borrow checker) ve C/C++ ekosistemleriyle birlikte çalışabilirliği (FFI) ele alınır.
+
+## Kurs İçeriği
+
+### Sahiplik ve Bellek Güvenliği Modeli
+* Ownership (sahiplik), Borrowing (ödünç alma) ve Lifetimes (yaşam süreleri)
+* `Option`, `Result` türleri ve hataya dayanıklı yazılım geliştirme
+
+### Soyutlama ve Eşzamanlılık
+* Trait sistemi, genelleyici türler ve sıfır maliyetli soyutlamalar (zero-cost abstractions)
+* Veri yarışlarını (data race) derleme zamanında engelleyen çoklu iş parçacığı programlama
+
+### Sistem Seviyesi Uygulamalar ve FFI
+* `unsafe` bloklarının sınırları ve ham işaretçiler (raw pointers)
+* C kütüphaneleri ile etkileşim (Foreign Function Interface) ve gömülü/sistem araçları geliştirme

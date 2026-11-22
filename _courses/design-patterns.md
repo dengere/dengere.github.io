@@ -1,16 +1,31 @@
 ---
 title: "Tasarım Kalıpları (Design Patterns)"
-summary: "Nesne yönelimli tasarım ilkeleri ve GoF kalıplarının C++ ile modellenmesi (Önceki dönem)."
+summary: "Nesne yönelimli yazılım tasarımında sık karşılaşılan mimari problemlere kalıcı çözümler sunan GoF tasarım kalıpları ve SOLID prensipleri."
 type: "course"
-featured: false
-order: 5
+categories:
+  - "Yazılım Mimarisi ve Tasarım"
+order: 1
 sample: true
-instructor: "Necati Ergin"
-start_date: "2026-03-01"
-schedule: "Hafta İçi Akşam"
-status: "archived"
+instructor: "Kaan Aslan"
+start_date: 2027-01-09
+schedule: "Hafta Sonu (Cumartesi 10:00 - 14:00)"
+format: "Online"
+duration: "64 saat"
 ---
 
-<p>Nesne yönelimli tasarım ilkeleri ve GoF kalıplarının C++ ile modellenmesi (Önceki dönem).</p>
+## Kurs Hakkında
 
-Bu kayıt önceki deneme sitesinden taşınmıştır. Tarih, program ve içerik yayından önce doğrulanmalıdır.
+Sürdürülebilir, esnek ve bakımı kolay yazılım mimarileri kurgulamak için SOLID tasarım ilkeleri ve Gang of Four (GoF) tasarım kalıpları gerçek hayat senaryolarıyla uygulanır.
+
+## Kurs İçeriği
+
+### Temel Tasarım İlkeleri
+* SOLID prensipleri ve bağımlılık yönetimi
+* Kalıtım yerine bileşim (composition over inheritance) yaklaşımı
+
+### Yaratımsal (Creational) Kalıplar
+* Singleton, Factory Method, Abstract Factory, Builder ve Prototype
+
+### Yapısal (Structural) ve Davranışsal (Behavioral) Kalıplar
+* Adapter, Decorator, Facade, Proxy ve Composite
+* Observer, Strategy, Command, State, Visitor ve Template Method
