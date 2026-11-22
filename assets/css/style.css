@@ -32,9 +32,13 @@
 
 html {
   background: var(--color-canvas-default);
+  scrollbar-gutter: stable;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   margin: 0;
   background: var(--color-canvas-default);
   color: var(--color-fg-default);
@@ -103,7 +107,7 @@ img {
 }
 
 .site-main {
-  min-height: 60vh;
+  flex: 1;
   padding-block: 24px 48px;
 }
 
@@ -407,3 +411,17 @@ h3 > a:hover::after {
   font-weight: 600;
   text-decoration: none;
 }
+
+article small {
+  color: var(--color-fg-muted);
+}
+
+.footer-inner:not(:has(> section)) {
+  padding-block: 16px;
+}
+
+.footer-inner:not(:has(> section)) .footer-bottom {
+  padding-top: 0;
+  border-top: 0;
+}
+
