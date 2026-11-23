@@ -461,3 +461,33 @@ article small {
     gap: 0 20px;
   }
 }
+
+
+.header-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+.site-title {
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+.header-social {
+  display: flex !important;
+  flex-shrink: 0 !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.header-social a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+}
