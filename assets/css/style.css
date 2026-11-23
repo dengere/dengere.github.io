@@ -68,12 +68,10 @@ a:focus-visible {
   outline-offset: 4px;
 }
 
-
 img {
   max-width: 100%;
   height: auto;
 }
-
 
 .container {
   width: calc(100% - 32px);
@@ -92,7 +90,7 @@ img {
 
 .header-inner {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
   padding-block: 16px;
@@ -121,6 +119,7 @@ img {
 }
 
 .site-title {
+  min-width: 0;
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.4;
@@ -274,15 +273,8 @@ dd {
   padding-block: 8px;
 }
 
-.footer-brand p,
 .footer-bottom {
   color: var(--color-fg-muted);
-}
-
-.footer-bottom {
-  grid-column: 1 / -1;
-  padding-top: 16px;
-  border-top: 1px solid var(--color-border-default);
   font-size: 0.875rem;
 }
 
@@ -290,8 +282,11 @@ dd {
   margin: 0;
 }
 
-@media (min-width: 481px) {
+.footer-inner:not(:has(> section)) {
+  padding-block: 16px;
+}
 
+@media (min-width: 481px) {
   .site-main {
     padding-top: 32px;
   }
@@ -299,10 +294,6 @@ dd {
   main > section,
   main > article {
     margin-bottom: 56px;
-  }
-
-  .footer-inner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -318,11 +309,16 @@ dd {
 }
 
 @media (min-width: 721px) {
-  .footer-inner {
-    grid-template-columns: 1.4fr 1fr;
+  .header-inner {
+    align-items: center;
+  }
+
+  .footer-inner section ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 20px;
   }
 }
-
 
 .site-title-separator {
   display: none;
@@ -399,9 +395,6 @@ dd {
   }
 }
 
-
-
-
 h3 > a {
   text-decoration: none;
 }
@@ -418,7 +411,6 @@ h3 > a::after {
 h3 > a:hover::after {
   color: var(--color-accent-hover);
 }
-
 
 .section-header {
   padding-bottom: 8px;
@@ -439,55 +431,4 @@ h3 > a:hover::after {
 
 article small {
   color: var(--color-fg-muted);
-}
-
-.footer-inner:not(:has(> section)) {
-  padding-block: 16px;
-}
-
-.footer-inner:not(:has(> section)) .footer-bottom {
-  padding-top: 0;
-  border-top: 0;
-}
-
-@media (min-width: 721px) {
-  .footer-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-inner section ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 20px;
-  }
-}
-
-
-.header-inner {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: flex-start !important;
-  justify-content: space-between !important;
-  gap: 12px !important;
-}
-
-.site-title {
-  margin: 0 !important;
-  min-width: 0 !important;
-}
-
-.header-social {
-  display: flex !important;
-  flex-shrink: 0 !important;
-  align-items: center !important;
-  gap: 4px !important;
-}
-
-.header-social a {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 36px !important;
-  height: 36px !important;
 }
