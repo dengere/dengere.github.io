@@ -20,12 +20,12 @@ defaults:
       path: ""
       type: courses
     values:
-      layout: detail
+      layout: course
   - scope:
       path: ""
       type: announcements
     values:
-      layout: detail
+      layout: announce
   - scope:
       path: ""
       type: resources

@@ -18,5 +18,3 @@ permalink: /iletisim/
 - [0212 274 63 60](tel:+902122746360)
 - [0212 274 99 89](tel:+902122749989)
 - [0212 288 35 20](tel:+902122883520)
-
-Bu bilgiler mevcut [CSD hakkımızda sayfasından](https://csystem.org/hakkimizda/) alınmıştır. Yeni site yayınlanmadan önce güncellikleri kontrol edilmelidir.

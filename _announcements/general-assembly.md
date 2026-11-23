@@ -3,6 +3,7 @@ title: "Dernek Olağan Genel Kurul Toplantısı"
 summary: "C ve Sistem Programcıları Derneği yıllık olağan genel kurul toplantısı dernek merkezinde gerçekleştirilecektir."
 type: "news"
 featured: true
+pinned: true
 order: 1
 sample: true
 date: "2026-10-02"

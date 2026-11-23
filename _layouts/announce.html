@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article>
+
+  <h1>{{ page.title | escape }}</h1>
+
+  {% include detail-common.html %}
+
+  {% if page.summary %}
+    <p>{{ page.summary | escape }}</p>
+  {% endif %}
+
+  <dl>
+    <dt>Yayın tarihi</dt>
+    <dd><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{% include date.html date=page.date %}</time></dd>
+
+    {% if page.event_date %}
+      <dt>Etkinlik tarihi</dt>
+      <dd><time datetime="{{ page.event_date | date: '%Y-%m-%d' }}">{% include date.html date=page.event_date %}</time></dd>
+    {% endif %}
+  </dl>
+
+  <div class="markdown-body">
+    {{ content }}
+  </div>
+</article>

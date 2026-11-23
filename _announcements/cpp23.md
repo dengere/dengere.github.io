@@ -2,7 +2,7 @@
 title: "Modern C++23 Standartları ve Bellek Modeli"
 summary: "C++23 ile gelen std::expected, deducing this ve modüllerin gerçek dünya projelerindeki performans etkileri."
 type: "seminar"
-featured: true
+featured: false
 order: 2
 sample: true
 date: "2026-11-08"

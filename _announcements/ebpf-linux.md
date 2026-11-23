@@ -2,7 +2,7 @@
 title: "eBPF ve Linux Çekirdek Gözlemlenebilirliği"
 summary: "Çekirdek kodunu değiştirmeden sistem çağrılarını izleme ve performans darboğazlarını eBPF ile tespit etme yöntemleri."
 type: "seminar"
-featured: true
+featured: false
 order: 1
 sample: true
 date: "2026-10-14"

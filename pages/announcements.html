@@ -8,11 +8,16 @@ permalink: /duyurular/
   <h1>{{ page.title | escape }}</h1>
   <p>Seminerler, buluşmalar ve dernekten haberler.</p>
 
-  {% assign announcements = site.announcements | where_exp: 'item', 'item.date <= site.time' | sort: 'date' | reverse %}
+  {% assign all_valid = site.announcements | where_exp: 'item', 'item.date <= site.time' %}
+  {% assign pinned_items = all_valid | where: 'pinned', true | sort: 'date' | reverse %}
+  {% assign normal_items = all_valid | where_exp: 'item', 'item.pinned == nil' | sort: 'date' | reverse %}
+  {% assign announcements = pinned_items | concat: normal_items %}
 
   <div class="card-grid">
   {% for announcement in announcements %}
-    {% include home-card-announce.html item=announcement %}
+    {% if announcement.featured != false %}
+      {% include home-card-announce.html item=announcement %}
+    {% endif %}
   {% else %}
     <p>Henüz yayınlanmış bir duyuru bulunmuyor.</p>
   {% endfor %}
