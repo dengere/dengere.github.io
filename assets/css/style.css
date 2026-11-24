@@ -9,6 +9,7 @@
   --color-heading: #244b5a;
   --color-accent-fg: #356879;
   --color-accent-hover: #244b5a;
+  --color-section-accent: #b54708;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +22,7 @@
     --color-heading: #9bbfcd;
     --color-accent-fg: #8db5c4;
     --color-accent-hover: #b7d3de;
+    --color-section-accent: #f38ba8; /* veya sıcak amber: #f59e0b */
   }
 }
 
@@ -431,4 +433,21 @@ h3 > a:hover::after {
 
 article small {
   color: var(--color-fg-muted);
+}
+
+.markdown-body h2.section-divider {
+  margin-top: 56px;
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  color: var(--color-section-accent);
+  border-bottom: 2px solid var(--color-section-accent);
+}
+
+.markdown-body h2.section-divider:first-child {
+  margin-top: 0;
+}
+
+.about-page h2:not(.section-divider) {
+  border-bottom: 0;
+  padding-bottom: 0;
 }

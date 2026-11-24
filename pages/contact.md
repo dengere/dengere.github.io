@@ -6,7 +6,7 @@ permalink: /iletisim/
 
 ## Dernek merkezi
 
-2. Taşocağı Cd. Oğuz Sk. Barbaros Apt. No: 11/2  
+2\. Taşocağı Cd. Oğuz Sk. Barbaros Apt. No: 11/2  
 34387 Mecidiyeköy / İstanbul
 
 ## E-posta

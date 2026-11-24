@@ -1,33 +1,28 @@
 ---
-layout: page
-title: CSD Hakkında
+layout: default
+title: Hakkımızda
 permalink: /hakkimizda/
 ---
 
-C ve Sistem Programcıları Derneği, çalışmalarını C/C++ programlama dilleri ile yürüten ve deneyimlerini sistem programlama alanı ile ilişkilendiren uzmanların oluşturduğu bir dernektir. 1993 yılında kurulmuştur.
+<article class="markdown-body about-page">
+  <h2 class="section-divider">CSD Hakkında</h2>
 
-## Amaçları
+  {% capture about %}{% include_relative about-content.md %}{% endcapture %}
+  {{ about | markdownify }}
 
-* Yazılım dünyasının en atılımcı ve yoğun bilgi gerektiren sistem programlama alanında, araştırma ve geliştirme faaliyetlerinde bulunmak ve bu alanda yapılan çalışmaları özendirmek ve desteklemek.
-* C/C++ ve sistem programcıları arasında bilgi ve mesleki yardımlaşma ortamı oluşturmak.
-* Üyelerinin daha etkin bir biçimde kaliteli yazılımlar üretebilmeleri amacıyla, mesleki bilgi ve becerilerinin gelişimine olanak sağlamak.
-* Yazılımda kalite bilincinin oluşmasını sağlamak.
-* Üyelerinin katılabileceği sosyal ve kültürel etkinliklere ortam hazırlamak.
-* C/C++ ve sistem programlama alanında yayınlar hazırlamak.
+<div class="intro">
+  <p><a href="{{ '/tuzuk/' | relative_url }}">Dernek Tüzüğü &rsaquo;</a></p>
+</div>
+  <h2 class="section-divider">İletişim</h2>
+  {% capture membership %}{% include_relative contact.md %}{% endcapture %}
+  {{ membership | split: '---' | last | markdownify }}
 
-## Etkinlikleri
+  <h2 class="section-divider">Dernek Üyeliği</h2>
+  {% capture membership %}{% include_relative membership.md %}{% endcapture %}
+  {{ membership | split: '---' | last | markdownify }}
 
-* C/C++ ve sistem programlama alanında konferans, seminer, kurs ve sempozyum düzenler.
-* C/C++ ve sistem programcılığının geliştirilmesi için resmi ve özel kurumlarla iş birliğinde bulunur.
-* Üyelerinin yararlanacağı doküman, dergi ve kitap gibi kaynakları bulunduran bir kütüphane oluşturur.
-* C/C++ programlama dillerinde ya da ilgili makine dilinde yazılmış, fonksiyon denilen alt programlara ilişkin, kaynak kodların bulunduğu kütüphaneler oluşturarak üyelerinin faydalanmasını sağlar.
-* C/C++ ve sistem programcılığını özendiren yarışmalar düzenler.
-* C/C++ ve sistem programlama alanında bilimsel, teknik, kültürel ve sosyal etkinlikler hazırlar.
+  <h2 class="section-divider">Yönetim Kurulu</h2>
+  {% capture board %}{% include_relative board.md %}{% endcapture %}
+  {{ board | split: '---' | last | markdownify }}
 
-## Gizlilik
-
-Öğrencilerimizin ya da üyelerimizin bilgileri gizli tutulmaktadır ve özenle korunmaktadır.
-
-## İş Birliği
-
-Derneğimiz 'SİSTEM BİLGİSAYAR HİZMETLERİ EĞİTİM VE DANIŞMANLIK LİMİTED ŞİRKETİ' ile iş birliği yaparak kurslar düzenlemektedir.
+</article>
