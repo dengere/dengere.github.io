@@ -101,7 +101,7 @@ img {
 .header-social {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0;
   flex-shrink: 0;
 }
 
@@ -109,7 +109,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
+  min-width: 32px;
   min-height: 44px;
   color: var(--color-fg-muted);
   text-decoration: none;
