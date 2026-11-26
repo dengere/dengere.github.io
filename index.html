@@ -17,7 +17,7 @@ title: Ana Sayfa
 <section>
   <header class="section-header">
     <h2>Yaklaşan Eğitimler</h2>
-    <a href="{{ '/kurslar/' | relative_url }}">Tüm eğitimleri incele ›</a>
+    <a href="{{ '/egitimler/' | relative_url }}">Tüm eğitimleri incele ›</a>
   </header>
   {% assign selected_courses = site.courses | where_exp: 'c', 'c.start_date != nil' | sort: 'start_date' | reverse %}
   {% for item in selected_courses limit:4 %}
