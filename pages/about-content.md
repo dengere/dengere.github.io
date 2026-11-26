@@ -20,7 +20,11 @@
 
 ### Tüzük
 
-Derneğimizin çalışma esaslarını ve kurumsal yapısını belirleyen [Dernek Tüzüğü](/tuzuk/) metnine buradan ulaşabilirsiniz.
+Derneğimizin çalışma esaslarını ve kurumsal yapısını belirleyen [**Dernek Tüzüğü**](/tuzuk/) metnine buradan ulaşabilirsiniz.
+
+### İletişim
+
+Eğitim programlarımız, kurumsal iş birlikleri ve danışmanlık talepleriniz için [**İletişim**](/iletisim/) sayfamızdan bize ulaşabilirsiniz.
 
 ### Gizlilik
 

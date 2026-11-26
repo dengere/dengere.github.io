@@ -13,9 +13,9 @@ permalink: /hakkimizda/
   {% capture contact %}{% include_relative contact.md %}{% endcapture %}
   {{ contact | split: '---' | last | markdownify }}
 
-  <h2 id="uyelik" class="section-divider">Dernek Üyeliği</h2>
+  <!-- <h2 id="uyelik" class="section-divider">Dernek Üyeliği</h2>
   {% capture membership %}{% include_relative membership.md %}{% endcapture %}
-  {{ membership | split: '---' | last | markdownify }}
+  {{ membership | split: '---' | last | markdownify }} -->
 
   <h2 id="yonetim" class="section-divider">Yönetim Kurulu</h2>
   {% capture board %}{% include_relative board.md %}{% endcapture %}
