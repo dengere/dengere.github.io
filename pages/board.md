@@ -4,7 +4,7 @@ title: Yönetim
 permalink: /yonetim/
 ---
 
-## Yönetim Kurulu Üyeleri
+### Yönetim Kurulu Üyeleri
 
 * Kaan Aslan – Başkan
 * Nuri Yılmaz
@@ -14,13 +14,13 @@ permalink: /yonetim/
 * Erol Öner
 * Aykut Taşdelen
 
-## Denetleme Kurulu Üyeleri
+### Denetleme Kurulu Üyeleri
 
 * Sebahat Ersoy
 * Gencay Çoşkun
 * Metin Aşçı
 
-## İdari İşler
+### İdari İşler
 
 * Güray Sönmez – Genel Sekreter
 * Gencay Coşkun – Genel Sekreter Yrd., Muhasebe Müd.

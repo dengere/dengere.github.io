@@ -22,7 +22,7 @@
     --color-heading: #9bbfcd;
     --color-accent-fg: #8db5c4;
     --color-accent-hover: #b7d3de;
-    --color-section-accent: #f38ba8; /* veya sıcak amber: #f59e0b */
+    --color-section-accent: #f59e0b;
   }
 }
 
@@ -109,7 +109,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 32px;
+  min-width: 36px;
   min-height: 44px;
   color: var(--color-fg-muted);
   text-decoration: none;
@@ -275,15 +275,6 @@ dd {
   padding-block: 8px;
 }
 
-.footer-bottom {
-  color: var(--color-fg-muted);
-  font-size: 0.875rem;
-}
-
-.footer-bottom p {
-  margin: 0;
-}
-
 .footer-inner:not(:has(> section)) {
   padding-block: 16px;
 }
@@ -353,11 +344,11 @@ dd {
   color: var(--color-accent-fg);
 }
 
-.intro > p:first-of-type {
+.intro-lead {
   color: var(--color-fg-muted);
 }
 
-.intro p:last-child {
+.intro-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -365,7 +356,7 @@ dd {
   margin-bottom: 0;
 }
 
-.intro p:last-child a {
+.intro-actions a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -375,17 +366,17 @@ dd {
   border: 1px solid var(--color-border-default);
 }
 
-.intro p:last-child a:hover {
+.intro-actions a:hover {
   background: var(--color-canvas-subtle);
 }
 
-.intro p:last-child a:first-child {
+.intro-actions a:first-child {
   background: var(--color-heading);
   border-color: var(--color-heading);
   color: var(--color-canvas-default);
 }
 
-.intro p:last-child a:first-child:hover {
+.intro-actions a:first-child:hover {
   background: var(--color-accent-fg);
   border-color: var(--color-accent-fg);
   color: var(--color-canvas-default);
@@ -396,7 +387,6 @@ dd {
     font-size: 1.65rem;
   }
 }
-
 h3 > a {
   text-decoration: none;
 }
@@ -450,4 +440,42 @@ article small {
 .about-page h2:not(.section-divider) {
   border-bottom: 0;
   padding-bottom: 0;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--color-fg-muted);
+  font-size: 0.875rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (min-width: 721px) {
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.reference-list {
+  margin-top: 24px;
+  padding-left: 1.25rem;
+  columns: 250px auto;
+  column-gap: 32px;
+}
+
+.reference-list li {
+  break-inside: avoid;
+  margin-bottom: 6px;
 }

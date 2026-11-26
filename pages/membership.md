@@ -4,16 +4,16 @@ title: Üyelik
 permalink: /uyelik/
 ---
 
-Derneğimize üye olmak size birçok avantaj sağlayacaktır. Derneğin kaynaklarından (bilgisayar, seminer ve kitap) faydalanabilmek gibi.
+Derneğimize üye olarak bilgisayar, seminer ve kitap gibi dernek kaynaklarından yararlanmak başta olmak üzere pek çok imkândan faydalanabilirsiniz.
 
-## Kimler Üye Olabilir?
+### Kimler Üye Olabilir?
 
-Derneğimize üye olmak için C programcısı ya da sistem programcısı olmak gerekir. Bu koşulu sağlayan arkadaşlar derneğimizi arayarak diğer koşulları öğrenebilirler.
+Derneğimize üye olmak için C veya sistem programcısı olmak gerekir. Bu koşulu sağlayan adaylar, derneğimizle iletişime geçerek üyelik süreci ve diğer detaylar hakkında bilgi alabilirler.
 
-## Nasıl Üye Olunur?
+### Nasıl Üye Olunur?
 
-Başvurular Yönetim Kurulu tarafından değerlendirilecek ve sonuç en kısa zamanda size bildirilecektir.
+Üyelik başvuruları dernek merkezimize şahsen veya iletişim kanallarımız üzerinden yapılır. Başvurular Yönetim Kurulu tarafından değerlendirilerek sonuç en kısa sürede adaya bildirilir.
 
-## Aidat
+### Aidat
 
-Aidatlar yıllık olarak ödenir.
+Üyelik aidatları yıllık olarak ödenir.

@@ -1,19 +1,12 @@
 <footer class="site-footer">
   <div class="container footer-inner">
-    {% if page.url == '/' %}
-      <section>
-<h2><a href="{{ '/hakkimizda/' | relative_url }}"><strong>CSD</strong> - C ve Sistem Programcıları Derneği</a></h2>
-        <ul>
-          <li><a href="tel:+905335274338">0533 527 43 38</a></li>
-          <li><a href="tel:+902122746360">(212) 274 63 60</a></li>
-          <li><a href="mailto:csystem@csystem.org">csystem@csystem.org</a></li>
-          <li><a href="{{ '/hakkimizda/#iletisim' | relative_url }}">Daha fazla...</a></li>
-        </ul>
-      </section>
-    {% else %}
-      <div class="footer-bottom">
-        <p><a href="{{ '/' | relative_url }}">&copy; {{ site.time | date: '%Y' }} C ve Sistem Programcıları Derneği</a></p>
-      </div>
-    {% endif %}
+    <div class="footer-bottom">
+      <p><strong>CSD</strong> - C ve Sistem Programcıları Derneği</p>
+      <nav class="footer-links" aria-label="Alt menü">
+        <a href="{{ '/hakkimizda/' | relative_url }}">Hakkımızda</a>
+        <!-- <a href="{{ '/referanslar/' | relative_url }}">Referanslarımız</a> -->
+        <a href="{{ '/iletisim/' | relative_url }}">İletişim</a>
+      </nav>
+    </div>
   </div>
 </footer>

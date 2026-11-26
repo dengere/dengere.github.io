@@ -4,17 +4,10 @@ title: İletişim
 permalink: /iletisim/
 ---
 
-## Dernek merkezi
-
 2\. Taşocağı Cd. Oğuz Sk. Barbaros Apt. No: 11/2  
 34387 Mecidiyeköy / İstanbul
 
-## E-posta
-
 [csystem@csystem.org](mailto:csystem@csystem.org)
 
-## Telefon
-
-- [0212 274 63 60](tel:+902122746360)
-- [0212 274 99 89](tel:+902122749989)
-- [0212 288 35 20](tel:+902122883520)
+[0533 527 43 80](tel:+905335274380)  
+[0542 222 07 93](tel:+905422220793)  
