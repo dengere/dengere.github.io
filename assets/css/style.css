@@ -156,12 +156,14 @@ img {
   font-weight: 600;
   letter-spacing: -0.01em;
 }
+
 /* Main & Typography */
 .site-main {
   flex: 1;
   padding-block: 24px 48px;
 }
 
+.intro,
 main > section,
 main > article {
   margin-block: 0 40px;
@@ -223,7 +225,7 @@ main > section > h2,
 
 /* Intro */
 .intro h1 {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 600;
   line-height: 1.35;
 }
@@ -271,20 +273,31 @@ main > section > h2,
 
 /* Sections, Cards & Lists */
 .section-header {
-  padding-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--color-border-default);
 }
 
 .section-header h2 {
   margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-section-accent);
 }
 
 .section-header a {
-  display: inline-block;
-  margin-top: 6px;
-  font-size: 0.9375rem;
+  color: var(--color-fg-muted);
+  font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
+}
+
+.section-header a:hover,
+.section-header a:focus-visible {
+  color: var(--color-accent-hover);
 }
 
 .card-grid {
@@ -295,7 +308,11 @@ main > section > h2,
 }
 
 main > section > article {
-  margin-block: 24px;
+  margin-block: 28px;
+}
+
+main > section > article:last-of-type {
+  margin-bottom: 0;
 }
 
 .card-grid > article {
@@ -306,6 +323,7 @@ main > section > article {
 main > section > article h3,
 .card-grid > article h3 {
   margin-top: 0;
+  font-size: 1.0625rem;
 }
 
 main > section > article > :last-child,
@@ -441,13 +459,23 @@ dd {
     padding-top: 32px;
   }
 
+  .intro,
   main > section,
   main > article {
     margin-bottom: 56px;
   }
 
   .intro h1 {
-    font-size: 1.65rem;
+    font-size: 1.7rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.35rem;
+  }
+
+  main > section > article h3,
+  .card-grid > article h3 {
+    font-size: 1.15rem;
   }
 }
 
