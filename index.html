@@ -3,62 +3,47 @@ layout: default
 title: Ana Sayfa
 ---
 
-{% include intro.html %}
+{% include intro-header.html %}
 
 
-<section>
-  <header class="section-header">
-    <h2>Kurs Başlıyor</h2>
-    <a href="{{ '/egitimler/' | relative_url }}">Tüm eğitimleri incele ›</a>
-  </header>
+<section class="announcements">
+  <h2>&nbsp;</h2>
 
-  {%- comment -%}
-    Bugünden 15 gün öncesine kadar başlamış ve gelecekte başlayacak tüm dönemleri
-    "YYYY-MM-DD||kurs_url||session_index" biçiminde toplayıp tarihe göre sıralar.
-  {%- endcomment -%}
-  {% assign limit_sec = site.time | date: '%s' | minus: 1296000 %}
-  {% assign limit_str = limit_sec | date: '%Y-%m-%d' %}
-  {% assign upcoming_entries = '' | split: '' %}
+  <article data-category="course">
+    <h3><a href="#">Üretici Yapay Zeka, Doğal Dil İşleme ve Büyük Dil Modelleri Kursu</a></h3>
+    <p>Transformer mimarisi, ince ayar (fine-tuning) ve yerel sistemlerde model çalıştırma tekniklerini kapsayan yeni dönem eğitimimiz açılıyor.</p>
+    <p>Başlangıç: 12 Aralık 2026 · Kayıtlar Açık</p>
+  </article>
 
-  {% for c in site.courses %}
-    {% if c.sessions and c.sessions.size > 0 %}
-      {% for s in c.sessions %}
-        {% if s.start_date %}
-          {% assign s_date_str = s.start_date | date: '%Y-%m-%d' %}
-          {% if s_date_str >= limit_str %}
-            {% capture entry %}{{ s_date_str }}||{{ c.url }}||{{ forloop.index0 }}{% endcapture %}
-            {% assign upcoming_entries = upcoming_entries | push: entry %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
+  <article data-category="seminar">
+    <h3><a href="#">Modern C++ ve Düşük Gecikmeli Sistem Programlama Semineri</a></h3>
+    <p>C++20/23 yenilikleri, bellek yönetimi ve yüksek performanslı sistem yazılımları üzerine düzenlenecek çevrimiçi seminerimize tüm geliştiriciler davetlidir.</p>
+    <p>5 Aralık Cumartesi, 14:00 · Ücretsiz ve Çevrimiçi</p>
+  </article>
 
-  {% assign sorted_entries = upcoming_entries | sort %}
+  <article data-category="association">
+    <h3><a href="#">Derneğimizin 2026 Yılı Olağan Genel Kurul Toplantısı</a></h3>
+    <p>Dernek tüzüğümüz gereği olağan genel kurul toplantımız üyelerimizin katılımıyla Mecidiyeköy merkezimizde gerçekleştirilecektir.</p>
+    <p>27 Kasım 2026 · Mecidiyeköy Merkez</p>
+  </article>
 
-  {% for entry in sorted_entries %}
-    {% assign parts = entry | split: '||' %}
-    {% assign course_url = parts[1] %}
-    {% assign session_idx = parts[2] | plus: 0 %}
-    {% assign course = site.courses | where: 'url', course_url | first %}
-    {% assign session = course.sessions[session_idx] %}
+  <article data-category="course">
+    <h3><a href="#">Rust Programlama Dili ve Gömülü Sistem Uygulamaları</a></h3>
+    <p>&nbsp;</p>
+    <p>Başlangıç: 19 Aralık 2026 · Son Kontenjan</p>
+  </article>
 
-    {% include home-card-course.html course=course session=session %}
-  {% else %}
-    <p>Yeni eğitim programı duyurulduğunda burada yer alacak.</p>
-  {% endfor %}
+  <article data-category="community">
+    <h3><a href="#">Açık Kaynak Sistem Araçları ve Kütüphane Güncellemesi</a></h3>
+    <p>Çekirdek kütüphanelerimizde yapılan bellek optimizasyonları ve yeni sürüm notları topluluk depomuzda yayınlandı.</p>
+    <p>&nbsp;</p>
+  </article>
+
+  <article data-category="publication">
+    <h3><a href="#">Linux Çekirdeği ve Sistem Çağrıları Ders Notları (2026 Baskısı)</a></h3>
+    <p>Eğitimlerimizde kullanılan güncel çekirdek notları ve örnek kod arşivi tüm üyelerimizin erişimine açıldı.</p>
+    <p>PDF &amp; Kaynak Kod · Açık Erişim</p>
+  </article>
 </section>
 
-
-<section>
-  <header class="section-header">
-    <h2>Duyurular</h2>
-    <a href="{{ '/duyurular/' | relative_url }}">Tüm duyuruları incele ›</a>
-  </header>
-  {% assign selected_announcements = site.announcements | where_exp: 'item', 'item.date <= site.time' | where: 'featured', true | sort: 'date' | reverse %}
-  {% for item in selected_announcements limit:4 %}
-    {% include card.html item=item %}
-  {% else %}
-    <p>Henüz duyuru bulunmuyor.</p>
-  {% endfor %}
-</section>
+{% include intro-references.html %}

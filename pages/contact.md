@@ -16,14 +16,12 @@ Mecidiyeköy / İSTANBUL
 
 ## Birimlere Göre İletişim
 
-**Bireysel Eğitimler ve Kayıt**  
-*Öğrenci ve yazılım uzmanlarına yönelik programlı açık eğitimler.*  
-[(533) 527 43 38](tel:+905335274338) · [(542) 222 07 93](tel:+905422220793) · <egitim@csystem.org>
+- **Eğitimler ve Kayıt**  
+  *Öğrenci, yazılım uzmanları ve kurumlara yönelik açık veya özel grup eğitimleri.*  
+  [(533) 527 43 38](tel:+905335274338) · [(542) 222 07 93](tel:+905422220793)  
+  Bireysel: <egitim@csystem.org>  
+  Kurumsal: <kurumsal@csystem.org>
 
-**Kurumsal Eğitim Planlama**  
-*Şirket ve kurumların ihtiyaçlarına özel grup eğitimleri.*  
-[(533) 527 43 38](tel:+905335274338) · [(542) 222 07 93](tel:+905422220793) · <kurumsal@csystem.org>
-
-**Danışmanlık ve Proje Yönetimi**  
-*Kurum ve girişimler için teknik danışmanlık ve yazılım ekibi yönetimi.*  
-[(543) 447 88 73](tel:+905434478873) · <proje@csystem.org>
+- **Danışmanlık ve Proje Yönetimi**  
+  *Kurum ve girişimler için teknik danışmanlık, ekip kurulumu ve uçtan uca yazılım geliştirme.*  
+  [(543) 447 88 73](tel:+905434478873) · <proje@csystem.org>
