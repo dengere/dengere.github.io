@@ -1,17 +1,22 @@
 ---
-title: "Sistem Programlama (Linux & POSIX)"
-summary: "Linux çekirdek sistem çağrıları, süreç yönetimi, çoklu iş parçacığı (POSIX threads), süreçler arası iletişim (IPC) ve ağ programlama temelleri."
-type: "course"
+layout: course
+title: "Veri Yapıları ve Algoritmalar (Test 5)"
+summary: "Temel veri yapıları, karmaşıklık analizi ve algoritmik problem çözme teknikleri."
 categories:
-  - "Sistem Programlama"
-  - "C / C++"
-order: 2
-sample: true
-instructor: "Kaan Aslan"
-start_date: 2026-12-12
-schedule: "Hafta Sonu (Cumartesi - Pazar 14:30 - 18:30)"
-format: "Online"
-duration: "120 saat"
+  - "Temel Programlama ve Bilgisayar Bilimleri"
+order: 5
+duration: "100 saat"
+instructors:
+  - "Necati Ergin"
+
+sessions:
+  - start_date: 2026-09-05
+    schedule:
+      - "Cumartesi 10:00 - 13:00"
+      - "Pazar 10:00 - 13:00"
+    instructor: "Necati Ergin"
+    format: "in_person"
+    note: "Tamamlanan dönem"
 ---
 
 ## Kurs Hakkında

@@ -1,10 +1,25 @@
-{% assign item = include.item %}
-<h3><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h3>
-<p>{{ item.summary | escape }}</p>
+{%- comment -%}
+  Ana sayfadaki "Kurs Duyuruları" bölümünde listelenen tek bir dönem duyurusunun
+  kart görünümünü (durum göstergesi, başlık, tarih, eğitmen ve format) oluşturur.
+{%- endcomment -%}
+{% assign course = include.course %}
+{% assign session = include.session %}
+{% assign today_str = site.time | date: '%Y-%m-%d' %}
+
+<h3>
+  {% if session.start_date %}
+    {% assign s_date_str = session.start_date | date: '%Y-%m-%d' %}
+    {% if s_date_str <= today_str %}
+      <span class="status-dot status-started" aria-hidden="true" title="Kurs Başladı"></span>
+    {% else %}
+      <span class="status-dot status-upcoming" aria-hidden="true" title="Kurs Başlayacak"></span>
+    {% endif %}
+  {% endif %}
+
+  <a href="{{ course.url | relative_url }}">{{ course.title | escape }}</a>
+</h3>
 <p>
-  <small>
-    Başlangıç: <strong>{% if item.start_date %}<time datetime="{{ item.start_date | date: '%Y-%m-%d' }}">{% include date.html date=item.start_date %}</time>{% else %}Duyurulacak{% endif %}</strong> · 
-    Eğitmen: <strong>{{ item.instructor | default: 'Duyurulacak' | escape }}</strong>
-    {% if item.format %} · {{ site.data.labels[item.format] | escape }}{% endif %}
-  </small>
+  <strong>{% if session.start_date %}<time datetime="{{ s_date_str }}">{% include date.html date=session.start_date %}</time>{% else %}Duyurulacak{% endif %}</strong> · 
+  Eğitmen: <strong>{{ session.instructor | default: 'Duyurulacak' | escape }}</strong>
+  {% if session.format %} · {{ site.data.labels[session.format] | escape }}{% endif %}
 </p>

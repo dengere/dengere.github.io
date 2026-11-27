@@ -1,11 +1,44 @@
 ---
 layout: default
 ---
-
-<article class="markdown-body">
-  <h2>kursa sayfa</h2>
-  <!-- <p class="breadcrumb"><a href="{{ '/' | relative_url }}">&larr; Ana sayfa</a></p> -->
+<article>
   <h1>{{ page.title | escape }}</h1>
+  <p><a href="{{ '/kayit/' | relative_url }}" class="btn">Kursa Kaydol</a></p>
+
+  {% if page.sessions and page.sessions.size > 0 %}
+    <div class="sessions">
+      {% assign sorted_sessions = page.sessions | sort: 'start_date' %}
+      {% for s in sorted_sessions %}
+        <div class="session">
+          <div class="session-date">
+            {% if s.start_date %}
+              <time datetime="{{ s.start_date | date: '%Y-%m-%d' }}">{% include date.html date=s.start_date %}</time>
+            {% else %}
+              Tarih Duyurulacak
+            {% endif %}
+          </div>
+          {% if s.note %}<div class="session-note">{{ s.note | escape }}</div>{% endif %}
+          <div class="session-instructor">
+            Eğitmen: {{ s.instructor | default: 'Duyurulacak' | escape }}
+            {% if s.format %} · {{ site.data.labels[s.format] | escape }}{% endif %}
+          </div>
+          {% if s.schedule and s.schedule.size > 0 %}
+            <div class="session-schedule">{{ s.schedule | join: ' · ' | escape }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if page.summary %}<p>{{ page.summary | escape }}</p>{% endif %}
+
+  <p>
+    {% if page.duration %}Süre: <strong>{{ page.duration | escape }}</strong>{% endif %}
+    {% if page.instructors and page.instructors.size > 0 %}
+      {% if page.duration %} · {% endif %}
+      Eğitmenler: <strong>{{ page.instructors | join: ', ' | escape }}</strong>
+    {% endif %}
+  </p>
+
   {{ content }}
 </article>
-

@@ -1,16 +1,13 @@
 ---
-title: "Modern C++ Programlama (C++20/C++23)"
-summary: "Nesne yönelimli ve genelleyici (generic) programlama paradigmaları, RAII, akıllı işaretçiler, şablon meta-programlama ve modern C++ standartları."
-type: "course"
+layout: course
+title: "Gömülü Sistemler ve Linux Çekirdeği (Test 4)"
+summary: "ARM mimarisi üzerinde sürücü geliştirme ve gömülü Linux sistem tasarımı."
 categories:
-  - "C / C++"
-order:
-sample: true
-instructor: "Kaan Aslan"
-start_date:
-schedule: "Hafta İçi Akşam (Salı - Perşembe 19:30 - 22:30)"
-format: "Online"
-duration: "140 saat"
+  - "Sistem ve Gömülü Yazılım"
+order: 4
+duration: "160 saat"
+instructors:
+  - "Kaan Aslan"
 ---
 
 ## Kurs Hakkında

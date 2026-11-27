@@ -1,17 +1,28 @@
 ---
-title: "Rust ile Sistem Programlama"
-summary: "Çöp toplayıcı (garbage collector) olmadan derleme zamanında bellek güvenliği sağlayan Rust dilinin sahiplik modeli, eşzamanlılık ve sistem programlama pratikleri."
-type: "course"
+layout: course
+title: "Python ile Veri Bilimi (Test 3)"
+summary: "Temel Python'dan veri analizi ve makine öğrenmesi kütüphanelerine kapsamlı giriş."
 categories:
-  - "Sistem Programlama"
-  - "Modern Sistem Dilleri"
-order:
-sample: true
-instructor: "Kaan Aslan"
-start_date:
-schedule: "Hafta Sonu (Pazar 10:00 - 14:00)"
-format: "Online"
-duration: "96 saat"
+  - "Veri Bilimi ve Yapay Zeka"
+order: 3
+duration: "120 saat"
+instructors:
+  - "Kaan Aslan"
+
+sessions:
+  - start_date: 2026-10-10
+    schedule:
+      - "Cumartesi 10:00 - 14:00"
+    instructor: "Kaan Aslan"
+    format: "online"
+    note: "Devam eden sonbahar grubu"
+
+  - start_date: 2027-01-09
+    schedule:
+      - "Cumartesi 14:30 - 18:30"
+    instructor: "Kaan Aslan"
+    format: "online"
+    note: "Yeni açılacak kış grubu"
 ---
 
 ## Kurs Hakkında

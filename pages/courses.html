@@ -1,46 +1,19 @@
 ---
 layout: default
-title: Eğitimler
+title: Eğitim Programları
 permalink: /egitimler/
 ---
 
 <section>
+  <h1>{{ page.title | escape }}</h1>
 
-
-  {% comment %} Bugünün tarihi (YYYY-MM-DD formatında karşılaştırma için) {% endcomment %}
-  {% assign today = site.time | date: '%Y-%m-%d' %}
-
-  {% comment %} 1. Başlangıç tarihi olan (devam eden veya açılacak) kursları topla ve tarihe göre sırala {% endcomment %}
-  {% assign active_courses = site.courses | where_exp: "c", "c.start_date != nil" | sort: 'start_date' %}
-
-  {% if active_courses.size > 0 %}
-    <h2>Devam Eden ve Açılacak Kurslar</h2>
-    {% for course in active_courses %}
-      {% assign course_start = course.start_date | date: '%Y-%m-%d' %}
-      <p>
-        <a href="{{ course.url | relative_url }}">{{ course.title | escape }}</a>
-        <br>
-        <small>
-          {% if course_start <= today %}
-            Devam ediyor · Başlangıç: <time datetime="{{ course_start }}">{% include date.html date=course.start_date %}</time>
-          {% else %}
-            Başlangıç: <time datetime="{{ course_start }}">{% include date.html date=course.start_date %}</time>
-          {% endif %}
-          {% if course.instructor %}
-            · Eğitmen: {{ course.instructor | escape }}
-          {% endif %}
-        </small>
-      </p>
-    {% endfor %}
-  {% endif %}
-
-  {% comment %} 2. Tüm kursları katalog sırasına diz: önce order, sonra alfabetik title {% endcomment %}
+  {% comment %} 1. Sıralama: Önce order numarası olanlar, sonra alfabetik title {% endcomment %}
   {% assign alpha_courses = site.courses | sort: 'title' %}
   {% assign ordered_courses = alpha_courses | where_exp: "c", "c.order != nil" | sort: 'order' %}
   {% assign unordered_courses = alpha_courses | where_exp: "c", "c.order == nil" %}
   {% assign sorted_courses = ordered_courses | concat: unordered_courses %}
 
-  {% comment %} 3. Tüm kurslardaki benzersiz kategorileri topla {% endcomment %}
+  {% comment %} 2. Benzersiz kategorileri topla {% endcomment %}
   {% assign raw_categories = "" | split: "" %}
   {% for course in sorted_courses %}
     {% if course.categories %}
@@ -51,7 +24,7 @@ permalink: /egitimler/
   {% endfor %}
   {% assign categories = raw_categories | uniq %}
 
-  {% comment %} 4. Kategori bazlı genel kurs listesi (noktasız, sade katalog görünümü) {% endcomment %}
+  {% comment %} 3. Kategori bazlı sade liste {% endcomment %}
   {% for category in categories %}
     <h2>{{ category | escape }}</h2>
     {% for course in sorted_courses %}
@@ -63,7 +36,7 @@ permalink: /egitimler/
     {% endfor %}
   {% endfor %}
 
-  {% comment %} 5. Kategorisi tanımlanmamış kurs kalırsa en altta göster {% endcomment %}
+  {% comment %} 4. Kategorisiz kalanlar varsa en altta göster {% endcomment %}
   {% assign uncategorized = "" | split: "" %}
   {% for course in sorted_courses %}
     {% unless course.categories and course.categories.size > 0 %}

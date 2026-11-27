@@ -1,16 +1,20 @@
 ---
-title: "Tasarım Kalıpları (Design Patterns)"
-summary: "Nesne yönelimli yazılım tasarımında sık karşılaşılan mimari problemlere kalıcı çözümler sunan GoF tasarım kalıpları ve SOLID prensipleri."
-type: "course"
+layout: course
+title: "İleri C++ ve Şablon Metaprogramlama (Test 6)"
+summary: "Modern C++20/23 yenilikleri, kavramlar (concepts) ve derleme zamanı programlama teknikleri."
 categories:
-  - "Yazılım Mimarisi ve Tasarım"
-order: 1
-sample: true
-instructor: "Kaan Aslan"
-start_date: 2027-01-09
-schedule: "Hafta Sonu (Cumartesi 10:00 - 14:00)"
-format: "Online"
-duration: "64 saat"
+  - "C ve C++ Programlama"
+order: 6
+duration: "140 saat"
+instructors:
+  - "Necati Ergin"
+
+sessions:
+  - schedule:
+      - "Cumartesi 14:00 - 18:00"
+    instructor: "Necati Ergin"
+    format: "online"
+    note: "Tarihi yakında duyurulacak"
 ---
 
 ## Kurs Hakkında

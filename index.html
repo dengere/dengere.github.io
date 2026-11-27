@@ -14,18 +14,51 @@ title: Ana Sayfa
   </p>
 </section>
 
+
 <section>
   <header class="section-header">
-    <h2>Yaklaşan Eğitimler</h2>
+    <h2>Kurs Başlıyor</h2>
     <a href="{{ '/egitimler/' | relative_url }}">Tüm eğitimleri incele ›</a>
   </header>
-  {% assign selected_courses = site.courses | where_exp: 'c', 'c.start_date != nil' | sort: 'start_date' | reverse %}
-  {% for item in selected_courses limit:4 %}
-    {% include card.html item=item %}
+
+  {%- comment -%}
+    Bugünden 15 gün öncesine kadar başlamış ve gelecekte başlayacak tüm dönemleri
+    "YYYY-MM-DD||kurs_url||session_index" biçiminde toplayıp tarihe göre sıralar.
+  {%- endcomment -%}
+  {% assign limit_sec = site.time | date: '%s' | minus: 1296000 %}
+  {% assign limit_str = limit_sec | date: '%Y-%m-%d' %}
+  {% assign upcoming_entries = '' | split: '' %}
+
+  {% for c in site.courses %}
+    {% if c.sessions and c.sessions.size > 0 %}
+      {% for s in c.sessions %}
+        {% if s.start_date %}
+          {% assign s_date_str = s.start_date | date: '%Y-%m-%d' %}
+          {% if s_date_str >= limit_str %}
+            {% capture entry %}{{ s_date_str }}||{{ c.url }}||{{ forloop.index0 }}{% endcapture %}
+            {% assign upcoming_entries = upcoming_entries | push: entry %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign sorted_entries = upcoming_entries | sort %}
+
+  {% for entry in sorted_entries %}
+    {% assign parts = entry | split: '||' %}
+    {% assign course_url = parts[1] %}
+    {% assign session_idx = parts[2] | plus: 0 %}
+    {% assign course = site.courses | where: 'url', course_url | first %}
+    {% assign session = course.sessions[session_idx] %}
+
+    {% include home-card-course.html course=course session=session %}
   {% else %}
     <p>Yeni eğitim programı duyurulduğunda burada yer alacak.</p>
   {% endfor %}
 </section>
+
+
 <section>
   <header class="section-header">
     <h2>Duyurular</h2>
@@ -38,14 +71,3 @@ title: Ana Sayfa
     <p>Henüz duyuru bulunmuyor.</p>
   {% endfor %}
 </section>
-
-<!-- <section>
-  <h1>Kaynaklar</h1>
-  {% assign selected_resources = site.resources | where: 'featured', true | sort: 'order' %}
-  {% for item in selected_resources limit:4 %}
-    {% include card.html item=item %}
-  {% else %}
-    <p>Henüz kaynak bulunmuyor.</p>
-  {% endfor %}
-  <p><a href="{{ '/kaynaklar/' | relative_url }}"><strong>Tüm kaynakları incele →</strong></a></p>
-</section> -->
