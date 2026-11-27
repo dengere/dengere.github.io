@@ -1,11 +1,8 @@
 ---
-title: "2026-2027 Kış Dönemi Teknik Eğitim Başvuruları Başladı"
-summary: "C, Sistem Programlama ve Modern C++ sınıflarımız için ön kayıtlar açılmıştır. Kontenjanlar sınırlıdır."
-type: "news"
-featured: true
-order: 2
-sample: true
-date: "2026-11-08"
+title: Açık Kaynak Sistem Araçları ve Kütüphane Güncellemesi
+category: community # course | seminar | association | community | publication
+description: Çekirdek kütüphanelerimizde yapılan bellek optimizasyonları ve yeni sürüm notları topluluk depomuzda yayınlandı.
+meta:
 ---
 
 C, Sistem Programlama ve Modern C++ sınıflarımız için ön kayıtlar açılmıştır. Kontenjanlar sınırlıdır.

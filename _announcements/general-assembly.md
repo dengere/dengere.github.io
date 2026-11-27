@@ -1,12 +1,8 @@
 ---
-title: "Dernek Olağan Genel Kurul Toplantısı"
-summary: "C ve Sistem Programcıları Derneği yıllık olağan genel kurul toplantısı dernek merkezinde gerçekleştirilecektir."
-type: "news"
-featured: true
-pinned: true
-order: 1
-sample: true
-date: "2026-10-02"
+title: Derneğimizin 2026 Yılı Olağan Genel Kurul Toplantısı
+category: association # course | seminar | association | community | publication
+description: Dernek tüzüğümüz gereği olağan genel kurul toplantımız üyelerimizin katılımıyla Mecidiyeköy merkezimizde gerçekleştirilecektir.
+meta: "27 Kasım 2026 · Mecidiyeköy Merkez"
 ---
 
 C ve Sistem Programcıları Derneği yıllık olağan genel kurul toplantısı dernek merkezinde gerçekleştirilecektir.

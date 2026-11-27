@@ -1,12 +1,8 @@
 ---
-title: "Modern C++23 Standartları ve Bellek Modeli"
-summary: "C++23 ile gelen std::expected, deducing this ve modüllerin gerçek dünya projelerindeki performans etkileri."
-type: "seminar"
-featured: false
-order: 2
-sample: true
-date: "2026-11-08"
-event_date: "2026-11-20"
+title: Üretici Yapay Zeka, Doğal Dil İşleme ve Büyük Dil Modelleri Kursu
+category: course # course | seminar | association | community | publication
+description: Transformer mimarisi, ince ayar (fine-tuning) ve yerel sistemlerde model çalıştırma tekniklerini kapsayan yeni dönem eğitimimiz açılıyor.
+meta: "Başlangıç: 12 Aralık 2026 · Kayıtlar Açık"
 ---
 
 C++23 ile gelen std::expected, deducing this ve modüllerin gerçek dünya projelerindeki performans etkileri.

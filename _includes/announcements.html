@@ -1,0 +1,33 @@
+<section class="announcements">
+  <h2>&nbsp;</h2>
+
+  {% comment %} 1. Sadece delisted olmayanları al (status boşsa veya listed ise) {% endcomment %}
+  {% assign visible_announcements = site.announcements | where_exp: "item", "item.status != 'delisted'" %}
+
+  {% comment %} 2. Tarihsizler (YAML'da date yazılmayanlar) ve tarihliler için boş diziler oluştur {% endcomment %}
+  {% assign undated = "" | split: "" %}
+  {% assign dated = "" | split: "" %}
+
+  {% for item in visible_announcements %}
+    {% if item.data.date and item.data.date != "" %}
+      {% assign dated = dated | push: item %}
+    {% else %}
+      {% assign undated = undated | push: item %}
+    {% endif %}
+  {% endfor %}
+
+  {% comment %} 3. Tarihsizleri başlığa göre alfabetik, tarihlileri yeniden eskiye sırala {% endcomment %}
+  {% assign undated = undated | sort: "title" %}
+  {% assign dated = dated | sort: "date" | reverse %}
+
+  {% comment %} 4. Önce tarihsizler, ardından tarihliler olacak şekilde birleştir {% endcomment %}
+  {% assign final_announcements = undated | concat: dated %}
+
+  {% for item in final_announcements %}
+    <article data-category="{{ item.category }}">
+      <h3><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h3>
+      <p>{% if item.description and item.description != "" %}{{ item.description | escape }}{% else %}&nbsp;{% endif %}</p>
+      <p>{% if item.meta and item.meta != "" %}{{ item.meta | escape }}{% else %}&nbsp;{% endif %}</p>
+    </article>
+  {% endfor %}
+</section>
