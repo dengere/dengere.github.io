@@ -570,21 +570,19 @@ dd {
   margin-bottom: 0;
 }
 
-.announcements > article > h3 {
-  margin-bottom: 0.35rem;
+.announcements > article > small {
+  display: block;
+  color: var(--cat-color, var(--color-fg-muted));
 }
-
-.announcements > article > p:first-of-type {
-  margin-top: 0;
-  margin-bottom: 0.35rem;
-}
-
-.announcements > article > p:last-of-type:not(:first-of-type) {
-  margin-top: 0;
-  margin-bottom: 0;
+.announcements > article > h3 { margin: 0; }
+.announcements > article > h3 > a::after { content: none; }
+.announcements > article > p {
+  margin: 0;
   font-size: 0.875rem;
   color: var(--color-fg-muted);
 }
+
+
 
 .markdown-body[data-category] h1 {
   padding-left: 14px;
@@ -660,3 +658,30 @@ dd {
   }
 }
 
+
+/* Bölümler arası ince çizgi */
+main > section + section {
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border-default);
+}
+
+a.btn,
+a.btn:hover,
+a.btn:focus-visible {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: var(--color-heading);
+  color: var(--color-canvas-default);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a.btn:hover {
+  opacity: 0.9;
+}
+
+a.btn::after,
+a.btn:hover::after {
+  color: inherit;
+}

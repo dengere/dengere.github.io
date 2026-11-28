@@ -1,33 +1,39 @@
 <section class="announcements">
   <h2>Duyurular</h2>
 
-  {% comment %} 1. Sadece delisted olmayanları al (status boşsa veya listed ise) {% endcomment %}
-  {% assign visible_announcements = site.announcements | where_exp: "item", "item.status != 'delisted'" %}
-
-  {% comment %} 2. Tarihsizler (YAML'da date yazılmayanlar) ve tarihliler için boş diziler oluştur {% endcomment %}
+  {% assign visible = site.announcements | where_exp: "item", "item.status != 'delisted'" %}
   {% assign undated = "" | split: "" %}
   {% assign dated = "" | split: "" %}
 
-  {% for item in visible_announcements %}
-    {% if item.data.date and item.data.date != "" %}
-      {% assign dated = dated | push: item %}
-    {% else %}
+  {% for item in visible %}
+    {% if item.date == site.time %}
       {% assign undated = undated | push: item %}
+    {% else %}
+      {% assign dated = dated | push: item %}
     {% endif %}
   {% endfor %}
 
-  {% comment %} 3. Tarihsizleri başlığa göre alfabetik, tarihlileri yeniden eskiye sırala {% endcomment %}
-  {% assign undated = undated | sort: "title" %}
-  {% assign dated = dated | sort: "date" | reverse %}
+  {% assign list = undated | sort_natural: "title" %}
+  {% assign days = dated | group_by_exp: "item", "item.date | date: '%Y-%m-%d'" | sort: "name" | reverse %}
+  {% for day in days %}
+    {% assign same_day = day.items | sort_natural: "title" %}
+    {% assign list = list | concat: same_day %}
+  {% endfor %}
 
-  {% comment %} 4. Önce tarihsizler, ardından tarihliler olacak şekilde birleştir {% endcomment %}
-  {% assign final_announcements = undated | concat: dated %}
-
-  {% for item in final_announcements %}
+  {% for item in list %}
+    {% assign label = site.data.labels[item.category] | default: item.category %}
+    {% assign has_date = true %}
+    {% if item.date == site.time %}{% assign has_date = false %}{% endif %}
     <article data-category="{{ item.category }}">
+      {% if label or has_date %}
+        <small>
+          {% if label %}{{ label }} duyurusu{% endif %}
+          {% if label and has_date %} · {% endif %}
+          {% if has_date %}{% include date.html date=item.date %}{% endif %}
+        </small>
+      {% endif %}
       <h3><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h3>
-      <p>{% if item.description and item.description != "" %}{{ item.description | escape }}{% else %}&nbsp;{% endif %}</p>
-      <p>{% if item.meta and item.meta != "" %}{{ item.meta | escape }}{% else %}&nbsp;{% endif %}</p>
+      {% if item.description and item.description != "" %}<p>{{ item.description | escape }}</p>{% endif %}
     </article>
   {% endfor %}
 </section>
