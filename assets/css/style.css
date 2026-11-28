@@ -685,3 +685,21 @@ a.btn::after,
 a.btn:hover::after {
   color: inherit;
 }
+
+a.btn.btn-outline,
+a.btn.btn-outline:hover,
+a.btn.btn-outline:focus-visible {
+  border: 1px solid var(--color-heading);
+  background: transparent;
+  color: var(--color-heading);
+}
+
+a.btn.btn-outline:hover {
+  background: var(--color-canvas-subtle);
+}
+
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
