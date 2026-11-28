@@ -1,0 +1,6 @@
+{%- capture md_raw -%}{% include_relative {{ include.file }} %}{%- endcapture -%}
+{%- assign html = md_raw | markdownify | replace_first: '<p>', '<p class="intro-lead">' -%}
+{%- assign parts = html | split: '<p>' -%}
+<section class="intro">
+{% for part in parts %}{% if forloop.first %}{{ part }}{% elsif forloop.last %}<p class="intro-actions">{{ part }}{% else %}<p>{{ part }}{% endif %}{% endfor %}
+</section>

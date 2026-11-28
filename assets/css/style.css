@@ -1,8 +1,10 @@
 /* ==========================================================================
-   1. TEMA DEĞİŞKENLERİ (Light & Dark Mode)
+   1. TEMA DEĞİŞKENLERİ VE TASARIM TOKEN'LARI (Light & Dark Mode)
    ========================================================================== */
 :root {
   color-scheme: light dark;
+
+  /* Renkler - Aydınlık Tema */
   --color-canvas-default: #ffffff;
   --color-canvas-subtle: #f6f8fa;
   --color-fg-default: #1f2328;
@@ -11,7 +13,7 @@
   --color-heading: #244b5a;
   --color-accent-fg: #356879;
   --color-accent-hover: #244b5a;
-  --color-section-accent: #b54708;
+  --color-link-underline: rgba(53, 104, 121, 0.35);
   --color-status-active: #16a34a;
   --color-status-pending: #eab308;
 
@@ -21,6 +23,13 @@
   --cat-association: #d97706;  /* Dernek: Kehribar / Turuncu */
   --cat-community: #7c3aed;    /* Topluluk: Mor */
   --cat-publication: #0d9488;  /* Yayın: Petrol / Turkuaz */
+
+  /* Yerleşim & Boşluk Token'ları */
+  --container-max: 760px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,9 +42,16 @@
     --color-heading: #9bbfcd;
     --color-accent-fg: #8db5c4;
     --color-accent-hover: #b7d3de;
-    --color-section-accent: #f59e0b;
+    --color-link-underline: rgba(141, 181, 196, 0.35);
     --color-status-active: #22c55e;
     --color-status-pending: #facc15;
+
+    /* Koyu arka planda yüksek kontrast için açılmış kategori tonları */
+    --cat-course: #60a5fa;
+    --cat-seminar: #4ade80;
+    --cat-association: #fbbf24;
+    --cat-community: #a78bfa;
+    --cat-publication: #2dd4bf;
   }
 }
 
@@ -56,20 +72,20 @@ html {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Eski tarayıcılar için fallback */
   min-height: 100dvh;
   margin: 0;
-  background: var(--color-canvas-default);
   color: var(--color-fg-default);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   overflow-wrap: break-word;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 .container {
   width: calc(100% - 32px);
-  max-width: 760px;
+  max-width: var(--container-max);
   margin-inline: auto;
 }
 
@@ -83,14 +99,14 @@ small {
 }
 
 /* ==========================================================================
-   3. BAĞLANTILAR VE ERİŞİLEBİLİRLİK (Links & Focus)
+3. BAĞLANTILAR VE ERİŞİLEBİLİRLİK (Links & Focus)
    ========================================================================== */
 a {
   color: var(--color-accent-fg);
   text-decoration: underline;
+  text-decoration-color: var(--color-link-underline);
   text-decoration-color: color-mix(in srgb, currentColor 25%, transparent);
   text-underline-offset: 0.3em;
-  text-decoration-skip-ink: auto;
   overflow-wrap: anywhere;
 }
 
@@ -101,15 +117,16 @@ a:focus-visible {
 }
 
 a:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--color-accent-fg);
   outline-offset: 4px;
 }
+
 .skip-link {
   position: absolute;
   left: -9999px;
-  top: 8px;
+  top: var(--space-sm);
   z-index: 100;
-  padding: 8px 16px;
+  padding: var(--space-sm) var(--space-md);
   background: var(--color-heading);
   color: var(--color-canvas-default);
   font-weight: 600;
@@ -117,22 +134,27 @@ a:focus-visible {
 }
 
 .skip-link:focus {
-  left: 8px;
+  left: var(--space-sm);
+  color: var(--color-canvas-default);
 }
 
 /* Kart başlıkları ve bölüm içi ana bağlantıların sağ ok (›) göstergesi */
 h3 > a,
-main > section > p > a:first-child {
+a.more-link,
+.intro-actions a {
   text-decoration: none;
 }
 
-main > section > p > a:first-child {
+a.more-link,
+.intro-actions a {
   font-weight: 500;
 }
 
 h3 > a::after,
-main > section > p > a:first-child::after {
+a.more-link::after,
+.intro-actions a::after {
   content: " ›";
+  content: " ›" / "";
   font-size: 1.2em;
   font-weight: 400;
   line-height: 1;
@@ -141,7 +163,8 @@ main > section > p > a:first-child::after {
 }
 
 h3 > a:hover::after,
-main > section > p > a:first-child:hover::after {
+a.more-link:hover::after,
+.intro-actions a:hover::after {
   color: var(--color-accent-hover);
 }
 
@@ -158,29 +181,31 @@ main > section > p > a:first-child:hover::after {
 }
 
 .header-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
   justify-content: space-between;
   gap: 2px 12px;
   padding-block: 10px;
 }
 
 .site-title {
-  display: contents;
+  grid-area: 1 / 1 / 2 / -1;
   margin: 0;
   font-size: 1.35rem;
   line-height: 1.3;
 }
 
 .site-title a {
-  display: contents;
+  display: block;
   color: var(--color-heading);
   text-decoration: none;
 }
 
 .site-title-abbr {
-  order: 1;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -190,8 +215,7 @@ main > section > p > a:first-child:hover::after {
 }
 
 .site-title-name {
-  order: 3;
-  flex-basis: 100%;
+  display: block;
   font-size: 1.135rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -201,23 +225,29 @@ main > section > p > a:first-child:hover::after {
 .header-social {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-  order: 2;
-  margin-right: -10px; /* Sağ kenar hizasını container ile sıfırlar */
+  grid-area: 1 / 2;
+  z-index: 1; /* Başlık bağlantısının üzerinde tıklanabilir kalır */
+  margin-right: -10px;
 }
 
-.header-social a {
+.header-social a,
+.footer-links a {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 44px;
   min-height: 44px;
   color: var(--color-fg-muted);
   text-decoration: none;
 }
 
+.header-social a {
+  justify-content: center;
+  min-width: 44px;
+}
+
 .header-social a:hover,
-.header-social a:focus-visible {
+.header-social a:focus-visible,
+.footer-links a:hover,
+.footer-links a:focus-visible {
   color: var(--color-heading);
 }
 
@@ -226,79 +256,95 @@ main > section > p > a:first-child:hover::after {
   height: 18px;
 }
 
+@media (min-width: 721px) {
+  .header-inner {
+    display: flex;
+    align-items: center;
+    padding-block: 12px;
+  }
+
+  .header-social {
+    margin-right: -8px;
+  }
+
+  .header-social a {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .site-title a,
+  .site-title-abbr,
+  .site-title-separator,
+  .site-title-name {
+    display: inline;
+    font-size: inherit;
+    font-weight: 700;
+    color: var(--color-heading);
+  }
+
+  .site-title-abbr {
+    min-height: 0;
+  }
+}
+
 /* ==========================================================================
-   5. ANA İÇERİK VE TİPOGRAFİ (Main & Headings)
+   5. ANA İÇERİK VE BAŞLIKLAR (Main & Headings)
    ========================================================================== */
 .site-main {
   flex: 1;
-  padding-block: 24px 48px;
+  padding-block: var(--space-lg) 48px;
 }
 
-main > section,
-main > article {
-  margin-block: 0 40px;
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
 }
 
-main > section:last-child,
-main > article:last-child {
-  margin-bottom: 0;
+@media (min-width: 481px) {
+  .site-main {
+    padding-top: 32px;
+  }
+
+  main {
+    gap: 56px;
+  }
 }
 
 h1,
 h2,
 h3 {
+  margin-top: 0;
   color: var(--color-heading);
   line-height: 1.25;
 }
 
 h1 {
-  margin-top: 0;
   font-size: 2rem;
 }
 
 h2 {
-  margin-top: 32px;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
 }
 
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 .breadcrumb {
   margin-top: 0;
 }
 
-/* Markdown içerik başlıkları (alt çizgisiz) */
 .markdown-body h1,
 .markdown-body h2 {
   padding-bottom: 0;
   border-bottom: none;
 }
 
-main > section > h2 {
-  color: var(--color-section-accent);
-  font-size: 1.25rem;
-}
-
 /* ==========================================================================
-   6. GİRİŞ ALANI VE TEKİL BUTON STANDARDI (Intro & Actions)
+6. GİRİŞ ALANI VE BUTONLAR (Intro & Actions)
    ========================================================================== */
-.intro {
-  padding-top: 16px;
-  margin-block: 0 56px;
-}
-
-.intro h1,
-.intro h2 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--color-heading);
-}
-
-.intro h1 em,
-.intro h2 em {
+.intro em {
   font-style: normal;
   color: var(--color-accent-fg);
 }
@@ -309,36 +355,14 @@ main > section > h2 {
   color: var(--color-fg-muted);
 }
 
+@media (min-width: 481px) {
+  .intro-lead {
+    font-size: 1.125rem;
+  }
+}
+
 .intro-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-block: 24px 0;
-}
-
-.intro-actions a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding-inline: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  border: 1px solid var(--color-border-default);
-}
-
-.intro-actions a:hover {
-  background: var(--color-canvas-subtle);
-}
-
-.intro-actions a:first-child {
-  background: var(--color-heading);
-  border-color: var(--color-heading);
-  color: var(--color-canvas-default);
-}
-
-.intro-actions a:first-child:hover {
-  background: var(--color-accent-fg);
-  border-color: var(--color-accent-fg);
+  margin-block: var(--space-md) 0;
 }
 
 /* ==========================================================================
@@ -349,15 +373,13 @@ main > section > h2 {
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 10px 16px;
+  gap: 10px var(--space-md);
   padding-bottom: 10px;
   border-bottom: 1px solid var(--color-border-default);
 }
 
 .section-header h2 {
   margin: 0;
-  font-size: 1.2rem;
-  color: var(--color-section-accent);
 }
 
 .section-header a {
@@ -375,8 +397,8 @@ main > section > h2 {
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 16px;
-  margin-top: 16px;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
 }
 
 main > section > article {
@@ -392,18 +414,11 @@ main > section > article:last-of-type {
   margin: 0;
 }
 
-main > section > article h3,
-.card-grid > article h3 {
-  margin-top: 0;
-  font-size: 1.0625rem;
-}
-
 main > section > article > :last-child,
 .card-grid > article > :last-child {
   margin-bottom: 0;
 }
 
-/* Kurs/etkinlik başlığı ile alt bilgi satırı aralığı */
 section h3 {
   margin-bottom: 0.2rem;
 }
@@ -413,7 +428,6 @@ section h3 + p {
   margin-bottom: 1.5rem;
 }
 
-/* Durum göstergesi (Başladı / Başlayacak) */
 .status-dot {
   display: inline-block;
   width: 0.65em;
@@ -433,10 +447,9 @@ section h3 + p {
   background-color: var(--color-status-pending);
 }
 
-/* Vurgu kutusu (Callout / Aside) */
 aside {
-  margin-block: 24px;
-  padding: 12px 16px;
+  margin-block: var(--space-lg);
+  padding: 12px var(--space-md);
   border-left: 3px solid var(--color-border-default);
   background: var(--color-canvas-subtle);
 }
@@ -449,12 +462,11 @@ aside > :last-child {
   margin-bottom: 0;
 }
 
-/* Tanım listeleri (Key-Value) */
 dl {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 2px;
-  margin-block: 24px;
+  margin-block: var(--space-lg);
 }
 
 dt {
@@ -465,6 +477,17 @@ dt {
 dd {
   min-width: 0;
   margin: 0 0 12px;
+}
+
+@media (min-width: 640px) {
+  dl {
+    grid-template-columns: fit-content(40%) minmax(0, 1fr);
+    gap: var(--space-sm) var(--space-md);
+  }
+
+  dd {
+    margin: 0;
+  }
 }
 
 /* ==========================================================================
@@ -492,7 +515,6 @@ dd {
 
 .footer-bottom strong {
   color: var(--color-heading);
-  font-weight: 700;
 }
 
 .footer-links {
@@ -502,99 +524,10 @@ dd {
 }
 
 .footer-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--color-fg-muted);
   font-weight: 500;
-  text-decoration: none;
-}
-
-.footer-links a:hover,
-.footer-links a:focus-visible {
-  color: var(--color-heading);
-}
-
-/* ==========================================================================
-   9. EKRAN BOYUTU KIRILIMLARI (Responsive Breakpoints - Mobile First)
-   ========================================================================== */
-@media (min-width: 481px) {
-  .site-main {
-    padding-top: 32px;
-  }
-
-  .intro {
-    padding-top: 24px;
-    margin-bottom: 72px;
-  }
-
-  main > section,
-  main > article {
-    margin-bottom: 56px;
-  }
-
-  .intro h1,
-  .intro h2 {
-    font-size: 1.35rem;
-  }
-
-  .intro-lead {
-    font-size: 1.125rem;
-  }
-
-  .section-header h2 {
-    font-size: 1.35rem;
-  }
-
-  main > section > article h3,
-  .card-grid > article h3 {
-    font-size: 1.15rem;
-  }
-}
-
-@media (min-width: 640px) {
-  dl {
-    grid-template-columns: fit-content(40%) minmax(0, 1fr);
-    gap: 8px 16px;
-  }
-
-  dd {
-    margin: 0;
-  }
 }
 
 @media (min-width: 721px) {
-  .header-inner {
-    flex-wrap: nowrap;
-    padding-block: 12px;
-  }
-
-  .header-social {
-    margin-right: -8px;
-  }
-
-  .header-social a {
-    min-width: 36px;
-    min-height: 36px;
-  }
-
-  .site-title {
-    display: block;
-    margin: 0;
-    font-size: 1.35rem;
-  }
-
-  .site-title a,
-  .site-title-abbr,
-  .site-title-separator,
-  .site-title-name {
-    display: inline;
-    flex-basis: auto;
-    font-size: inherit;
-    font-weight: 700;
-    color: var(--color-heading);
-  }
-
   .footer-bottom {
     flex-direction: row;
     align-items: center;
@@ -607,66 +540,56 @@ dd {
 }
 
 /* ==========================================================================
-   10. DUYURULAR BÖLÜMÜ VE DETAY SAYFASI (.announcements & [data-category])
+   9. DUYURULAR BÖLÜMÜ VE DETAY SAYFASI (.announcements & [data-category])
    ========================================================================== */
+[data-category="course"]      { --cat-color: var(--cat-course); }
+[data-category="seminar"]     { --cat-color: var(--cat-seminar); }
+[data-category="association"] { --cat-color: var(--cat-association); }
+[data-category="community"]   { --cat-color: var(--cat-community); }
+[data-category="publication"] { --cat-color: var(--cat-publication); }
 
-/* Üstteki boşluk tutucu h2 */
-.announcements > h2 {
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  line-height: 1;
-}
-
-/* Her bir duyuru kartı / bloğu */
 .announcements > article {
   position: relative;
   padding-left: 1rem;
   margin-bottom: 1.5rem;
-  border-left: 3px solid color-mix(in srgb, var(--cat-color, currentColor) 45%, transparent);
+  border-left: 3px solid var(--cat-color, var(--color-border-default));
+}
+
+/* İlk kartın üst boşluğu korunur; kartlar arası boşluğu margin-bottom belirler */
+.announcements > article + article {
+  margin-top: 0;
+}
+
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .announcements > article[data-category] {
+    border-left-color: color-mix(in srgb, var(--cat-color, var(--color-border-default)) 55%, transparent);
+  }
 }
 
 .announcements > article:last-child {
   margin-bottom: 0;
 }
 
-/* Kategori renk eşleşmeleri */
-.announcements > article[data-category="course"]      { --cat-color: var(--cat-course); }
-.announcements > article[data-category="seminar"]     { --cat-color: var(--cat-seminar); }
-.announcements > article[data-category="association"] { --cat-color: var(--cat-association); }
-.announcements > article[data-category="community"]   { --cat-color: var(--cat-community); }
-.announcements > article[data-category="publication"] { --cat-color: var(--cat-publication); }
-
-/* Başlık (mevcut h3 stillerini korur, sadece dikey boşluğu sıkılaştırır) */
 .announcements > article > h3 {
-  margin-top: 0;
   margin-bottom: 0.35rem;
 }
 
-/* İlk paragraf: Kısa özet */
 .announcements > article > p:first-of-type {
   margin-top: 0;
   margin-bottom: 0.35rem;
 }
 
-/* İkinci paragraf: Tarih / durum detayı (daha küçük ve sakin) */
-.announcements > article > p:last-of-type {
+.announcements > article > p:last-of-type:not(:first-of-type) {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 0.875rem;
   color: var(--color-fg-muted);
 }
 
-/* Duyuru detay sayfası başlık ve meta stili */
 .markdown-body[data-category] h1 {
   padding-left: 14px;
-  border-left: 4px solid var(--color-border-default);
+  border-left: 4px solid var(--cat-color, var(--color-border-default));
 }
-
-.markdown-body[data-category="course"] h1      { border-left-color: var(--cat-course); }
-.markdown-body[data-category="seminar"] h1     { border-left-color: var(--cat-seminar); }
-.markdown-body[data-category="association"] h1 { border-left-color: var(--cat-association); }
-.markdown-body[data-category="community"] h1   { border-left-color: var(--cat-community); }
-.markdown-body[data-category="publication"] h1 { border-left-color: var(--cat-publication); }
 
 .announcement-meta {
   margin-top: -0.5rem;
@@ -676,36 +599,34 @@ dd {
 }
 
 /* ==========================================================================
-   11. HAKKIMIZDA SAYFASI (.about-page)
+   10. HAKKIMIZDA SAYFASI (.about-page)
    ========================================================================== */
-
-/* Sayfa ana başlığı ve giriş paragrafı */
 .about-page > h1 {
-  margin-top: 0;
   margin-bottom: 1rem;
 }
 
-.about-page > p:first-of-type {
+.about-page > p:first-of-type,
+.referanslar-page > p:first-of-type {
   font-size: 1.05rem;
   line-height: 1.65;
+}
+
+.about-page > p:first-of-type {
   margin-bottom: 2rem;
 }
 
-/* Tüm ana bölüm başlıkları (Amaçları, Etkinlikleri, Tüzük, İletişim, Yönetim Kurulu) */
 .about-page > h2 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   padding-top: 1.25rem;
-  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+  border-top: 1px solid var(--color-border-default);
 }
 
-/* Alt başlıklar (Birimlere Göre İletişim, Yönetim Kurulu Üyeleri vb.) */
 .about-page > h3 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-/* Madde işaretli listelerin okuma ritmi */
 .about-page > ul {
   margin-top: 0.5rem;
   margin-bottom: 1.25rem;
@@ -718,19 +639,12 @@ dd {
 }
 
 /* ==========================================================================
-   12. REFERANSLAR SAYFASI (.referanslar-page)
+   11. REFERANSLAR SAYFASI (.referanslar-page)
    ========================================================================== */
-
-.referanslar-page > p:first-of-type {
-  font-size: 1.05rem;
-  line-height: 1.65;
-}
-
 .referanslar-page > ul {
   list-style: none;
   margin-top: 1.5rem;
   padding-left: 0;
-  columns: 1;
 }
 
 .referanslar-page > ul > li {
@@ -739,9 +653,10 @@ dd {
   line-height: 1.55;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 640px) {
   .referanslar-page > ul {
     columns: 2;
     column-gap: 2rem;
   }
 }
+

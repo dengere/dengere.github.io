@@ -1,5 +1,5 @@
 <section class="announcements">
-  <h2>&nbsp;</h2>
+  <h2>Duyurular</h2>
 
   {% comment %} 1. Sadece delisted olmayanları al (status boşsa veya listed ise) {% endcomment %}
   {% assign visible_announcements = site.announcements | where_exp: "item", "item.status != 'delisted'" %}
