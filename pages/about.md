@@ -65,7 +65,7 @@ Adres
 ### Yönetim Kurulu Üyeleri
 
 * Kaan Aslan – Başkan
-* Nuri Yılmaz
+* Nuri Yılmaz - The Codefather
 * Serdar Başokutan – Sayman
 * Gürbüz Aslan – Yazman
 * Hüseyin Büte
