@@ -704,3 +704,49 @@ a.btn.btn-outline:hover {
   flex-wrap: wrap;
   gap: 8px;
 }
+
+/* ==========================================================================
+   12. KURSLAR SAYFASI (.course-list)
+   ========================================================================== */
+.course-list h2 {
+  margin: var(--space-xl) 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.course-list h2 small {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.course-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.course-list li {
+  margin-bottom: var(--space-sm);
+  break-inside: avoid;
+}
+
+.course-list a {
+  text-decoration: none;
+}
+
+.course-list a::after {
+  content: " ›";
+  content: " ›" / "";
+  color: var(--color-fg-muted);
+}
+
+.course-list a:hover::after {
+  color: var(--color-accent-hover);
+}
+
+@media (min-width: 640px) {
+  .course-list ul {
+    columns: 2;
+    column-gap: 2rem;
+  }
+}

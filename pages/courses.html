@@ -1,0 +1,33 @@
+---
+layout: default
+title: Kurslar
+permalink: /kurslar/
+---
+<section class="course-list">
+<h1>Kurslar</h1>
+
+{% assign courses = site.courses | where_exp: "course", "course.delisted != true" | sort_natural: "title" %}
+
+{% assign keys = "" | split: "" %}
+{% for pair in site.data.labels %}
+  {% assign keys = keys | push: pair[0] %}
+{% endfor %}
+{% for course in courses %}
+  {% for cat in course.category %}
+    {% assign keys = keys | push: cat %}
+  {% endfor %}
+{% endfor %}
+{% assign keys = keys | uniq %}
+
+{% for key in keys %}
+  {% assign group = courses | where_exp: "course", "course.category contains key" %}
+  {% if group.size > 0 %}
+        <h2>{{ site.data.labels[key] | default: key }} <small>· {{ group.size }}</small></h2>
+    <ul>
+    {% for course in group %}
+      <li><a href="{{ course.url | relative_url }}">{{ course.title | escape }}</a></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}
+</section>

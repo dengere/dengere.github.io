@@ -17,3 +17,20 @@ archived: Geçmiş dönem
 community: Topluluk
 association: Dernek
 publication: Yayın
+ai: Yapay Zeka ve Veri Bilimi
+system: Sistem Programlama ve Mimari
+basics: Programlamanın Temelleri
+c: C ile Sistem Temelleri
+cpp: Modern C++
+csharp: C# ve .NET Teknolojileri
+java: Java Teknolojileri
+python: Python ile Programlama
+js: JavaScript Ekosistemi
+other: Yeni Nesil Diller
+linux: UNIX/Linux Sistemleri
+windows: Windows Sistemleri
+embedded: Gömülü Sistemler ve Donanım
+web: Web Teknolojileri
+mobile: Mobil Teknolojiler
+database: Veri Yönetimi Sistemleri
+design: Yazılım Mimarisi ve Tasarımı
