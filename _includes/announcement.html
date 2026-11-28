@@ -1,0 +1,30 @@
+{% assign label = site.data.labels[page.category] | default: page.category %}
+{% assign has_date = true %}
+{% if page.date == site.time %}{% assign has_date = false %}{% endif %}
+
+<article class="markdown-body" data-category="{{ page.category }}">
+  {% if label or has_date %}
+    <small>
+      {% if label %}{{ label }} duyurusu{% endif %}
+      {% if label and has_date %} · {% endif %}
+      {% if has_date %}{% include date.html date=page.date %}{% endif %}
+    </small>
+  {% endif %}
+
+  <h1>{{ page.title | escape }}</h1>
+
+  {% if page.description and page.description != "" %}
+    <p class="intro-lead">{{ page.description | escape }}</p>
+  {% endif %}
+
+  {% if page.meta and page.meta != "" %}
+    <p>
+      {% if label %}<small class="meta-label">{{ label }} duyurusu</small><br>{% endif %}
+      <strong>{{ page.meta | escape }}</strong>
+    </p>
+  {% endif %}
+
+  {{ content }}
+
+  <p><a href="{{ '/#duyurular' | relative_url }}">‹ Duyurular</a></p>
+</article>

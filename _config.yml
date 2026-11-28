@@ -18,14 +18,14 @@ collections:
 defaults:
   - scope:
       path: ""
+      type: announcements
+    values:
+      layout: announcement
+  - scope:
+      path: ""
       type: courses
     values:
       layout: course
-  - scope:
-      path: ""
-      type: announcements
-    values:
-      layout: announce
   - scope:
       path: ""
       type: resources

@@ -548,22 +548,15 @@ dd {
 [data-category="community"]   { --cat-color: var(--cat-community); }
 [data-category="publication"] { --cat-color: var(--cat-publication); }
 
+/* Liste */
 .announcements > article {
-  position: relative;
   padding-left: 1rem;
   margin-bottom: 1.5rem;
   border-left: 3px solid var(--cat-color, var(--color-border-default));
 }
 
-/* İlk kartın üst boşluğu korunur; kartlar arası boşluğu margin-bottom belirler */
 .announcements > article + article {
   margin-top: 0;
-}
-
-@supports (color: color-mix(in srgb, red 50%, blue)) {
-  .announcements > article[data-category] {
-    border-left-color: color-mix(in srgb, var(--cat-color, var(--color-border-default)) 55%, transparent);
-  }
 }
 
 .announcements > article:last-child {
@@ -574,26 +567,34 @@ dd {
   display: block;
   color: var(--cat-color, var(--color-fg-muted));
 }
-.announcements > article > h3 { margin: 0; }
-.announcements > article > h3 > a::after { content: none; }
+
+.announcements > article > h3 {
+  margin: 0;
+}
+
+.announcements > article > h3 > a::after {
+  content: none;
+}
+
 .announcements > article > p {
   margin: 0;
   font-size: 0.875rem;
   color: var(--color-fg-muted);
 }
 
-
+/* Detay sayfası */
+.markdown-body[data-category] > small {
+  display: block;
+  color: var(--cat-color, var(--color-fg-muted));
+}
 
 .markdown-body[data-category] h1 {
   padding-left: 14px;
   border-left: 4px solid var(--cat-color, var(--color-border-default));
 }
 
-.announcement-meta {
-  margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--color-fg-muted);
+.meta-label {
+  color: var(--cat-color, var(--color-fg-muted));
 }
 
 /* ==========================================================================
