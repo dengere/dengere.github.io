@@ -1,0 +1,5 @@
+{%- for key in include.keys -%}
+{%- assign person = site.data.instructors[key] -%}
+{%- if person.url -%}<a href="{{ person.url | relative_url }}">{{ person.name | escape }}</a>{%- else -%}{{ person.name | default: key | escape }}{%- endif -%}
+{%- unless forloop.last %}, {% endunless -%}
+{%- endfor -%}

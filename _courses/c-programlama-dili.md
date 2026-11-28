@@ -1,7 +1,7 @@
 ---
 title: "C Programlama Dili"
 category: [c]
-instructors: []
+instructors: [kaan, necati]
 delisted: false
 ---
 

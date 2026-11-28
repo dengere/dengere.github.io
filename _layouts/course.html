@@ -19,8 +19,8 @@ layout: default
           </div>
           {% if s.note %}<div class="session-note">{{ s.note | escape }}</div>{% endif %}
           <div class="session-instructor">
-            Eğitmen: {{ s.instructor | default: 'Duyurulacak' | escape }}
-            {% if s.format %} · {{ site.data.labels[s.format] | escape }}{% endif %}
+            Eğitmen: {% if s.instructor %}{% include instructors.html keys=s.instructor %}{% else %}Duyurulacak{% endif %}
+            {% if s.format %} · {{ site.data.labels[s.format] | default: s.format | escape }}{% endif %}
           </div>
           {% if s.schedule and s.schedule.size > 0 %}
             <div class="session-schedule">{{ s.schedule | join: ' · ' | escape }}</div>
@@ -36,7 +36,7 @@ layout: default
     {% if page.duration %}Süre: <strong>{{ page.duration | escape }}</strong>{% endif %}
     {% if page.instructors and page.instructors.size > 0 %}
       {% if page.duration %} · {% endif %}
-      Eğitmenler: <strong>{{ page.instructors | join: ', ' | escape }}</strong>
+      Eğitmenler: <strong>{% include instructors.html keys=page.instructors %}</strong>
     {% endif %}
   </p>
 
